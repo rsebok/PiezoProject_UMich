@@ -17,9 +17,9 @@ def pixmove_posX():
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 1
-    freq = 0.0005
-    voltage = 2.5
+    newt = 0.5 
+    freq = 0.1
+    voltage = 1.5
 
     print('posX',voltage,'Vpp',newt,'s')
 
@@ -33,7 +33,7 @@ def pixmove_posX():
     time.sleep(0.6)
     vi.write("c1:bswv sym, 0") #set the amplitude
     time.sleep(0.6)
-    vi.write("c1:bswv duty,25") #duty cycle
+    vi.write("c1:bswv duty,75") #duty cycle
     time.sleep(0.6)
     vi.write("c1:bswv dlay, 1") #brust delay for 1 second
     time.sleep(1)
@@ -44,16 +44,15 @@ def pixmove_posX():
 
     print('Pix move done.')
     
-def pixmove_negX():
+def pixmove_negX(x):
     #Use this section to move in neg x
     rm=visa.ResourceManager()
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 1
-    freq = 0.0005
-
-    voltage = 2.5
+    newt = 0.5 
+    freq = 0.1
+    voltage = 1.9
 
     print('negX',voltage,'Vpp',newt,'s')
 
@@ -67,7 +66,7 @@ def pixmove_negX():
     time.sleep(0.6)
     vi.write("c1:bswv sym, 100") #set the amplitude
     time.sleep(0.6)
-    vi.write("c1:bswv duty,25") #duty cycle
+    vi.write("c1:bswv duty,75") #duty cycle
     time.sleep(0.6)
     vi.write("c1:bswv dlay, 1") #brust delay for 1 second
     time.sleep(1)
@@ -78,16 +77,15 @@ def pixmove_negX():
 
     print('Pix move done.')
 
-def pixmove_negY():
+def pixmove_negY(y):
     #Use this section to move in neg y
     rm=visa.ResourceManager()
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 1
-    freq = 0.05
-
-    voltage = 3
+    newt = 0.5 
+    freq = 0.1
+    voltage = 2.5
 
     print('negY',voltage,'Vpp',newt,'s')
 
@@ -112,16 +110,15 @@ def pixmove_negY():
 
     print('Pix move done.')
 
-def pixmove_posY():
+def pixmove_posY(y):
     #Use this section to move in pos y
     rm=visa.ResourceManager()
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 1
-    freq = 0.0005
-
-    voltage = 2.5
+    newt = 0.5 
+    freq = 0.1
+    voltage = 1.5
 
     print('posY',voltage,'Vpp',newt,'s')
 
@@ -135,7 +132,7 @@ def pixmove_posY():
     time.sleep(0.6)
     vi.write("c2:bswv sym, 100") #set the amplitude
     time.sleep(0.6)
-    vi.write("c2:bswv duty,50") #duty cycle
+    vi.write("c2:bswv duty,75") #duty cycle
     time.sleep(0.6)
     vi.write("c2:bswv dlay, 1") #brust delay for 1 second
     time.sleep(1)

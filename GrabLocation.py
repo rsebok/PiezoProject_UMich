@@ -83,14 +83,16 @@ def grab_location(name):
 
         #Frame color control 
             GrayFrame = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-            blurFrame = cv.GaussianBlur(GrayFrame, (25,25),0)
+            #blurFrame = cv.GaussianBlur(GrayFrame, (17,17),0)
             # Set up the detector with default parameters.
 
             # Threshold image to binary
-            thresh = cv.threshold(blurFrame, 35, 255, cv.THRESH_BINARY)[1]
+            thresh = cv.threshold(GrayFrame, 254, 255, cv.THRESH_BINARY)[1]
+            thresh2 = cv.resize(thresh, (1478, 994))
+            cv.imshow("Thresh", thresh2)
 
             # Find contours
-            contours, hierarchy = cv.findContours(blurFrame, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+            contours, hierarchy = cv.findContours(thresh, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 
             # Iterate through contours and find largest contour
             largest_contour_area = 0
@@ -102,16 +104,21 @@ def grab_location(name):
                     largest_contour = contour
 
             # Draw outline of largest contour on input image
-            img_with_contour = cv.cvtColor(blurFrame, cv.COLOR_GRAY2BGR)
-            cv.drawContours(img_with_contour, [largest_contour], 0, (0, 0, 255), 2)
+            img_with_contour = cv.cvtColor(thresh, cv.COLOR_GRAY2BGR)
+            cv.drawContours(img_with_contour, [largest_contour], 0, (0, 255, 0), 1)
 
             # Get coordinates of center of largest contour
             M = cv.moments(largest_contour)
-            cx = int(M['m10'] / M['m00'])
-            cy = int(M['m01'] / M['m00'])
+            cx = (M['m10'] / M['m00'])
+            cy = (M['m01'] / M['m00'])
+            subpixel_contour = cv.cornerSubPix(GrayFrame, np.float32([(cx,cy)]), winSize=(1,1), zeroZone=(-1,-1), criteria=(cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER, 100, 0.00001))
+            subpixel_point = subpixel_contour[0]
+            cv.circle(img_with_contour, (int(subpixel_point[0]), int(subpixel_point[1])), 2, (255,0,0), 1)
+            pcx = subpixel_point[0]
+            pcy = subpixel_point[1]
 
             # Draw a circle at the center of the largest contour
-            cv.circle(img_with_contour, (cx, cy), 5, (255, 0, 0), -1)
+            #cv.circle(img_with_contour, (cx, cy), 5, (255, 0, 0), 1)
 
             # Show the input image with contour and center
             imS = cv.resize(img_with_contour, (1478, 994)) # Resize image
@@ -119,8 +126,8 @@ def grab_location(name):
 
             # Print coordinates of center of largest contour
             #print(f"({cx}, {cy})")
-            xcoords.append(cx*conversion)
-            ycoords.append(cy*conversion)
+            xcoords.append(pcx*conversion)
+            ycoords.append(pcy*conversion)
 
             key = cv.waitKey(30) 
             if key == 27 : break

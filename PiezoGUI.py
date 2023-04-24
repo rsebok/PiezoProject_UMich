@@ -7,6 +7,7 @@ import pyvisa as visa
 import PySimpleGUI as sg
 from multiprocessing import Process
 import sys
+import os
 import LiveVid as lv
 from Movements import move_negX,move_posX,move_negY,move_posY
 from MovementsSteps import movesteps_negX,movesteps_posX,movesteps_negY,movesteps_posY
@@ -46,6 +47,8 @@ col2 = [[sg.Text(' ')],
         [sg.Text('Run some analysis:')],
         [sg.Button('AutoXYTest'),sg.Button('AutoXYTestWinCond')],
         [sg.Button('AutoVelposX'),sg.Button('AutoVelposY'),sg.Button('AutoVelnegX'),sg.Button('AutoVelnegY')],
+        [sg.Text(' ')],
+        [sg.Button('Power Status'),sg.Button('Power On'),sg.Button('Power Off')],
         [sg.Text(' ')]
         ]
 
@@ -55,12 +58,27 @@ layout=[[sg.Text('~~~ Welcome to the U of Michigan piezo positioner. ~~~')],
         [sg.Button('Exit')]]
 
 # Create the Window
-window = sg.Window('Piezo GUI',layout,size=(650,500),element_justification='center')
+window = sg.Window('Piezo GUI',layout,size=(650,650),element_justification='center')
 # Event Loop to process "events" and get the "values" of the inputs
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'Exit': # if user closes window or clicks cancel
         break
+    if event == 'Power On':
+        os.system("cd C:\Program Files (x86)\PowerUSB && pwrusbcmd 1 1 0")
+        print("Amplifier and waveform generator set to: ON")
+    if event == 'Power Off':
+        os.system("cd C:\Program Files (x86)\PowerUSB && pwrusbcmd 0 0 0")
+        print("Amplifier and waveform generator set to: OFF")
+    if event == 'Power Status':
+        try:
+            rm = visa.ResourceManager()
+            li = rm.list_resources()
+            vi = rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
+            print("Waveform generator response detected. Power is on.")
+        except visa.errors.VisaIOError:
+            print("No response from waveform generator. Power is most likely off.")
+            
     if event == 'Start Video':
         lv.LiveVid()
     if event == 'Grab Location':

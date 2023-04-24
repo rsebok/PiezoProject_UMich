@@ -9,6 +9,7 @@ import config_constants as cc
 from Movements import move_negX,move_posX,move_negY,move_posY
 from TinyMovements import tinymove_negX,tinymove_posX,tinymove_negY,tinymove_posY
 from PixMovements import pixmove_negX,pixmove_posX,pixmove_negY,pixmove_posY
+from SmallMovements import smallmove_negX,smallmove_posX,smallmove_negY,smallmove_posY
 
 def moveXY(x,y):
     
@@ -30,12 +31,13 @@ def moveXY(x,y):
         t = abs(x/posX_speed)
         if abs(x) <= 0.005:
             return
-        elif abs(x) <= 0.03:
-            pixmove_posX()
-        elif abs(x) <= 0.05:
-            pixmove_posX()
-            pixmove_posX()
-        elif abs(x) <= 0.3:
+        #elif abs(x) <= 0.08:
+            #smallmove_posX(x)
+            #i = 2
+            #while i <= abs(x)/0.01:
+                #smallmove_posX(x)
+                #i+=1
+        elif abs(x) <= 0.5:
             tinymove_posX(voltage,x)
         else:
             move_posX(voltage,t)
@@ -45,12 +47,13 @@ def moveXY(x,y):
         t = abs(x/negX_speed)
         if abs(x) <= 0.005:
             return
-        elif abs(x) <= 0.03:
-            pixmove_negX()
-        elif abs(x) <= 0.05:
-            pixmove_negX()
-            pixmove_negX()
-        elif abs(x) <= 0.3:
+        #elif abs(x) <= 0.08:
+            #smallmove_negX(x)
+            #i = 2
+            #while i <= abs(x)/0.01:
+                #smallmove_negX(x)
+                #i+=1
+        elif abs(x) <= 0.5:
             tinymove_negX(voltage,x)
         else:
             move_negX(voltage,t)
@@ -60,12 +63,13 @@ def moveXY(x,y):
         t = abs(y/posY_speed)
         if abs(y) <= 0.005:
             return
-        elif abs(y) <= 0.03:
-            pixmove_posY()
-        elif abs(y) <= 0.05:
-            pixmove_posY()
-            pixmove_posY()
-        elif abs(y) <= 0.3:
+        #elif abs(y) <= 0.08:
+            #smallmove_posY(y)
+            #i = 2
+            #while i <= abs(y)/0.01:
+                #smallmove_posY(y)
+                #i+=1
+        elif abs(y) <= 0.5:
             tinymove_posY(voltage,y)
         else:
             move_posY(voltage,t)
@@ -75,12 +79,13 @@ def moveXY(x,y):
         t = abs(y/negY_speed)
         if abs(y) <= 0.005:
             return
-        elif abs(y) <= 0.03:
-            pixmove_negY()
-        elif abs(y) <= 0.05:
-            pixmove_negY()
-            pixmove_negY()
-        elif abs(y) <= 0.3:
+        #elif abs(y) <= 0.08:
+            #smallmove_negY(y)
+            #i = 2
+            #while i <= abs(y)/0.01:
+                #smallmove_negY(y)
+                #i+=1
+        elif abs(y) <= 0.5:
             tinymove_negY(voltage,y)
         else:
             move_negY(voltage,t)

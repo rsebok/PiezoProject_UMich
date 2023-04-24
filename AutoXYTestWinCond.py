@@ -144,7 +144,7 @@ def AutoXYTestWinCond(points,attempts,error):
     def Average(lst):
         return sum(lst) / len(lst)
 
-    print('## Final win count:',w,'/',points,"with an error of:",error,"mm")
+    print('## Final win count:',w,'/',points,"with an error of:",error,"mm.")
     print('## The maximum tries for a single win was',max(tries),'and the minimum was',min(tries),'.')
     print('## The average number of tries per win was',Average(tries),'.')
     print('## Your results are saved as:',name)

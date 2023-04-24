@@ -2,16 +2,16 @@
 
 #speed of each channel
 speeds = dict(
-    posX = 1.8046, #mm/s
-    negX = 1.7787,
-    posY = 1.7555,
-    negY = 1.5822,
+    posX = 1.610, #mm/s
+    negX = 1.709,
+    posY = 1.497,
+    negY = 2.000,
 )
 
 #max range of piezo
 circle = dict(
-    circle_x = 14.760, #mm
-    circle_y = 11.537,   
+    circle_x = 14.604, #mm
+    circle_y = 11.049,   
     circle_r = 2.5,
 )
 
