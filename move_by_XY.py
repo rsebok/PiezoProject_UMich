@@ -31,13 +31,12 @@ def moveXY(x,y):
         t = abs(x/posX_speed)
         if abs(x) <= 0.005:
             return
-        #elif abs(x) <= 0.08:
-            #smallmove_posX(x)
-            #i = 2
-            #while i <= abs(x)/0.01:
-                #smallmove_posX(x)
-                #i+=1
-        elif abs(x) <= 0.5:
+        elif abs(x) <= 0.03:
+            smallmove_posX(x)
+        elif abs(x) <= 0.05:
+            smallmove_posX(x)
+            smallmove_posX(x)
+        elif abs(x) <= 0.3:
             tinymove_posX(voltage,x)
         else:
             move_posX(voltage,t)
@@ -47,13 +46,12 @@ def moveXY(x,y):
         t = abs(x/negX_speed)
         if abs(x) <= 0.005:
             return
-        #elif abs(x) <= 0.08:
-            #smallmove_negX(x)
-            #i = 2
-            #while i <= abs(x)/0.01:
-                #smallmove_negX(x)
-                #i+=1
-        elif abs(x) <= 0.5:
+        elif abs(x) <= 0.03:
+            smallmove_negX(x)
+        elif abs(x) <= 0.05:
+            smallmove_negX(x)
+            smallmove_negX(x)
+        elif abs(x) <= 0.3:
             tinymove_negX(voltage,x)
         else:
             move_negX(voltage,t)
@@ -63,13 +61,12 @@ def moveXY(x,y):
         t = abs(y/posY_speed)
         if abs(y) <= 0.005:
             return
-        #elif abs(y) <= 0.08:
-            #smallmove_posY(y)
-            #i = 2
-            #while i <= abs(y)/0.01:
-                #smallmove_posY(y)
-                #i+=1
-        elif abs(y) <= 0.5:
+        elif abs(y) <= 0.03:
+            smallmove_posY(y)
+        elif abs(y) <= 0.05:
+            smallmove_posY(y)
+            smallmove_posY(y)
+        elif abs(y) <= 0.3:
             tinymove_posY(voltage,y)
         else:
             move_posY(voltage,t)
@@ -79,13 +76,12 @@ def moveXY(x,y):
         t = abs(y/negY_speed)
         if abs(y) <= 0.005:
             return
-        #elif abs(y) <= 0.08:
-            #smallmove_negY(y)
-            #i = 2
-            #while i <= abs(y)/0.01:
-                #smallmove_negY(y)
-                #i+=1
-        elif abs(y) <= 0.5:
+        elif abs(y) <= 0.03:
+            smallmove_negY(y)
+        elif abs(y) <= 0.05:
+            smallmove_negY(y)
+            smallmove_negY(y)
+        elif abs(y) <= 0.3:
             tinymove_negY(voltage,y)
         else:
             move_negY(voltage,t)

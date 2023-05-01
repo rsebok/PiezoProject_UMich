@@ -6,18 +6,18 @@ import usb.core
 import usb.util
 import config_constants as cc
 
-negX_speed = cc.speeds['negX']
-negY_speed = cc.speeds['negY']
-posY_speed = cc.speeds['posY']
-posX_speed = cc.speeds['posX']
+negX_speed = cc.pix_move_dist['negX']
+negY_speed = cc.pix_move_dist['negY']
+posY_speed = cc.pix_move_dist['posY']
+posX_speed = cc.pix_move_dist['posX']
 
-def pixmove_posX():
+def pixmove_posX(x):
     #Use this section to move in pos x
     rm=visa.ResourceManager()
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 0.5 
+    newt =  abs(int(x/posX_speed))*0.5
     freq = 0.1
     voltage = 1.5
 
@@ -50,9 +50,9 @@ def pixmove_negX(x):
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 0.5 
+    newt = abs(int(x/negX_speed))*0.5
     freq = 0.1
-    voltage = 1.9
+    voltage = 2
 
     print('negX',voltage,'Vpp',newt,'s')
 
@@ -83,7 +83,7 @@ def pixmove_negY(y):
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 0.5 
+    newt = abs(int(y/negY_speed))*0.5
     freq = 0.1
     voltage = 2.5
 
@@ -116,7 +116,7 @@ def pixmove_posY(y):
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 0.5 
+    newt = abs(int(y/posY_speed))*0.5
     freq = 0.1
     voltage = 1.5
 

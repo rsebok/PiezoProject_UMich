@@ -2,11 +2,19 @@
 
 #speed of each channel
 speeds = dict(
-    posX = 1.610, #mm/s
-    negX = 1.709,
-    posY = 1.497,
-    negY = 2.000,
+    posX = 1.775, #mm/s
+    negX = 1.742,
+    posY = 2.225,
+    negY = 1.772,
 )
+
+pix_move_dist = dict(
+    posX = 0.005, #mm
+    negX = 0.01,
+    posY = 0.005,
+    negY = 0.005,
+)    
+    
 
 #max range of piezo
 circle = dict(
@@ -16,6 +24,5 @@ circle = dict(
 )
 
 #pixel conversions etc
-voltage = 4.0 #Vpp
+voltage = 4 #Vpp
 conversion = 0.009375 #mm/pix
-offset = 0.08 #mm

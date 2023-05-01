@@ -48,6 +48,7 @@ col2 = [[sg.Text(' ')],
         [sg.Button('AutoXYTest'),sg.Button('AutoXYTestWinCond')],
         [sg.Button('AutoVelposX'),sg.Button('AutoVelposY'),sg.Button('AutoVelnegX'),sg.Button('AutoVelnegY')],
         [sg.Text(' ')],
+        [sg.Text('Power options:')],
         [sg.Button('Power Status'),sg.Button('Power On'),sg.Button('Power Off')],
         [sg.Text(' ')]
         ]

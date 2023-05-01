@@ -17,9 +17,9 @@ def smallmove_posX(x):
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 0.5
-    freq = 0.1
-    voltage = 1.6
+    newt = 1
+    freq = 0.001
+    voltage = 2.5
 
     print('posX',voltage,'Vpp',newt,'s')
 
@@ -31,7 +31,7 @@ def smallmove_posX(x):
     time.sleep(0.6)
     vi.write("c1:bswv amp, %s" %voltage) #set the amplitude
     time.sleep(0.6)
-    vi.write("c1:bswv sym, 0") #set the amplitude
+    vi.write("c1:bswv sym, 0") #set the symmetry
     time.sleep(0.6)
     vi.write("c1:bswv duty,75") #duty cycle
     time.sleep(0.6)
@@ -52,9 +52,9 @@ def smallmove_negX(x):
     
     
     
-    newt = 0.5
-    freq = 0.1
-    voltage = 2.25
+    newt = 1
+    freq = 0.001
+    voltage = 2.5
 
     print('negX',voltage,'Vpp',newt,'s')
 
@@ -66,7 +66,7 @@ def smallmove_negX(x):
     time.sleep(0.6)
     vi.write("c1:bswv amp, %s" %voltage) #set the amplitude
     time.sleep(0.6)
-    vi.write("c1:bswv sym, 100") #set the amplitude
+    vi.write("c1:bswv sym, 100") #set the symmetry
     time.sleep(0.6)
     vi.write("c1:bswv duty,75") #duty cycle
     time.sleep(0.6)
@@ -85,9 +85,9 @@ def smallmove_negY(y):
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 0.5
+    newt = 1
     freq = 0.1
-    voltage = 2.8
+    voltage = 2.5
 
     print('negY',voltage,'Vpp',newt,'s')
 
@@ -99,7 +99,7 @@ def smallmove_negY(y):
     time.sleep(0.6)
     vi.write("c2:bswv amp, %s" %voltage) #set the amplitude
     time.sleep(0.6)
-    vi.write("c2:bswv sym, 0") #set the amplitude
+    vi.write("c2:bswv sym, 0") #set the symmetry
     time.sleep(0.6)
     vi.write("c2:bswv duty,75") #duty cycle
     time.sleep(0.6)
@@ -118,9 +118,9 @@ def smallmove_posY(y):
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 0.5
-    freq = 0.1
-    voltage = 1.7
+    newt = 1
+    freq = 0.001
+    voltage = 2.5
 
     print('posY',voltage,'Vpp',newt,'s')
 
@@ -132,7 +132,7 @@ def smallmove_posY(y):
     time.sleep(0.6)
     vi.write("c2:bswv amp, %s" %voltage) #set the amplitude
     time.sleep(0.6)
-    vi.write("c2:bswv sym, 100") #set the amplitude
+    vi.write("c2:bswv sym, 100") #set the symmetry
     time.sleep(0.6)
     vi.write("c2:bswv duty,75") #duty cycle
     time.sleep(0.6)

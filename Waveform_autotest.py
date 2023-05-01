@@ -17,7 +17,6 @@ import pyvisa as visa
 import os
 from AutoCircleCopyRS import move_circle
 from move_by_XY import moveXY
-from CenterPiezoRS import center_piezo
 from GrabLocation import grab_location
 import config_constants as cc
 import cv2
@@ -33,7 +32,7 @@ def auto_test(channel, symm, voltage, freq, duration, trials):
     x, y = grab_location('junk')
 
     for i in range(1, trials + 1):
-        moveXY(cc.circle['circle_x'] - x, cc.circle['circle_y'] - y)
+        moveXY(cc.circle['circle_x'] - x, cc.circle['circle_y'] - y + 2)
 
         x0, y0 = grab_location('junk')
         x0coords.append(x0)
