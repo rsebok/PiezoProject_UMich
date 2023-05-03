@@ -14,7 +14,7 @@ import config_constants as cc
 from Movements import move_negX,move_posX,move_negY,move_posY
 from TinyMovements import tinymove_negX,tinymove_posX,tinymove_negY,tinymove_posY
 from PixMovements import pixmove_negX,pixmove_posX,pixmove_negY,pixmove_posY
-from SmallMovements import smallmove_negX,smallmove_posX,smallmove_negY,smallmove_posY
+from MicroMovements import micromove_negX,micromove_posX,micromove_negY,micromove_posY
 
 def moveXY(x,y):
     
@@ -37,10 +37,10 @@ def moveXY(x,y):
         if abs(x) <= 0.005:
             return
         elif abs(x) <= 0.03:
-            smallmove_posX(x)
+            micromove_posX(x)
         elif abs(x) <= 0.05:
-            smallmove_posX(x)
-            smallmove_posX(x)
+            micromove_posX(x)
+            micromove_posX(x)
         elif abs(x) <= 0.3:
             tinymove_posX(voltage,x)
         else:
@@ -52,10 +52,10 @@ def moveXY(x,y):
         if abs(x) <= 0.005:
             return
         elif abs(x) <= 0.03:
-            smallmove_negX(x)
+            micromove_negX(x)
         elif abs(x) <= 0.05:
-            smallmove_negX(x)
-            smallmove_negX(x)
+            micromove_negX(x)
+            micromove_negX(x)
         elif abs(x) <= 0.3:
             tinymove_negX(voltage,x)
         else:
@@ -67,10 +67,10 @@ def moveXY(x,y):
         if abs(y) <= 0.005:
             return
         elif abs(y) <= 0.03:
-            smallmove_posY(y)
+            micromove_posY(y)
         elif abs(y) <= 0.05:
-            smallmove_posY(y)
-            smallmove_posY(y)
+            micromove_posY(y)
+            micromove_posY(y)
         elif abs(y) <= 0.3:
             tinymove_posY(voltage,y)
         else:
@@ -82,10 +82,10 @@ def moveXY(x,y):
         if abs(y) <= 0.005:
             return
         elif abs(y) <= 0.03:
-            smallmove_negY(y)
+            micromove_negY(y)
         elif abs(y) <= 0.05:
-            smallmove_negY(y)
-            smallmove_negY(y)
+            micromove_negY(y)
+            micromove_negY(y)
         elif abs(y) <= 0.3:
             tinymove_negY(voltage,y)
         else:
