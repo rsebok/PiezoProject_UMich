@@ -1,25 +1,18 @@
-#!/usr/bin/env python
-# coding: utf-8
+#Function to test the positioning
+#Input: number of random points to attempt
 
-# In[1]:
-
+#Last updated 05/03/2023 by RAS
 
 import time
 import random
 import math
 import array
 import pandas as pd
-#from threading import Thread 
 from AutoCircleCopyRS import move_circle
 from move_by_XY import moveXY
-from CenterPiezoRS import center_piezo
 from GrabLocation import grab_location
-#from BlasterDatacollection import dataB
 from Movements import move_negX,move_posX,move_negY,move_posY
 import config_constants as cc
-
-
-# In[2]:
 
 def AutoXYTest(points):
     

@@ -1,7 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
+#NOT IN USE
 
-# In[1]:
+#Last updated 05/03/2023 by RAS
 
 from vpython import * 
 from pypylon import pylon

@@ -1,26 +1,18 @@
-#!/usr/bin/env python
-# coding: utf-8
+#Function to test the distance moved per second
+#Input: voltage, time per move, trials
 
-# In[1]:
-
+#Last updated 05/03/2023 by RAS
 
 import time
 import random
 import array
 import pandas as pd
 import numpy as np
-#from threading import Thread 
 from AutoCircleCopyRS import move_circle
 from move_by_XY import moveXY
-from CenterPiezoRS import center_piezo
 from GrabLocation import grab_location
-#from BlasterDatacollection import dataB
 from Movements import move_posY,move_negY,move_posX,move_negX
 import config_constants as cc
-
-
-# In[ ]:
-
 
 def vel_negX(voltage,runtime,trials):
     

@@ -1,3 +1,9 @@
+#These functions are used to move the positioner a pixel distance by changing the frequency and voltage
+#NOT CURRENTLY IN USE
+#Input: distance to move
+
+#Last updated 05/03/2023 by RAS
+
 import pyvisa as visa
 import time
 import cv2
@@ -23,7 +29,6 @@ def pixmove_posX(x):
 
     print('posX',voltage,'Vpp',newt,'s')
 
-    #print(vi.query("*idn?"))
     print("Configuring C1")
     vi.write("c1:bswv frq, %s" %freq) #set the frequency of channel 1
     time.sleep(0.6)
@@ -56,7 +61,6 @@ def pixmove_negX(x):
 
     print('negX',voltage,'Vpp',newt,'s')
 
-    #print(vi.query("*idn?"))
     print("Configuring C1")
     vi.write("c1:bswv frq, %s" %freq) #set the frequency of channel 1
     time.sleep(0.6)
@@ -89,7 +93,6 @@ def pixmove_negY(y):
 
     print('negY',voltage,'Vpp',newt,'s')
 
-    #print(vi.query("*idn?"))
     print("Configuring C2")
     vi.write("c2:bswv frq, %s" %freq) #set the frequency of channel 1
     time.sleep(0.6)
@@ -122,7 +125,6 @@ def pixmove_posY(y):
 
     print('posY',voltage,'Vpp',newt,'s')
 
-    #print(vi.query("*idn?"))
     print("Configuring C2")
     vi.write("c2:bswv frq, %s" %freq) #set the frequency of channel 1
     time.sleep(0.6)

@@ -1,8 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
+#Function to test the positioning with multiple attempts
+#Input: number of random points to attempt, attempts allowed, and acceptable error (win condition)
 
-# In[1]:
-
+#Last updated 05/03/2023 by RAS
 
 import time
 from timer import Timer
@@ -13,15 +12,11 @@ import pandas as pd
 import numpy as np
 import pyvisa as visa
 import os
-#from threading import Thread 
 from AutoCircleCopyRS import move_circle
 from move_by_XY import moveXY
-from CenterPiezoRS import center_piezo
 from GrabLocation import grab_location
 import config_constants as cc
 
-
-# In[2]:
 
 def AutoXYTestWinCond(points,attempts,error):
     
@@ -42,10 +37,6 @@ def AutoXYTestWinCond(points,attempts,error):
     print(fulllist)
     x = 0
     y = 0
-
-
-    # In[3]:
-
 
     #generate random movetable
     i = 1
@@ -71,10 +62,6 @@ def AutoXYTestWinCond(points,attempts,error):
         print('Random x:',randxs)
         print('Random y:',randys)
 
-
-    # In[4]:
-
-
     n = 1 #start at trial 1
     i = 1 #start at point 1
     w = 0 #start at zero wins
@@ -84,10 +71,6 @@ def AutoXYTestWinCond(points,attempts,error):
     moveXY(circle_x-x,circle_y-y) #send the piezo back to the center
     x,y = grab_location(fulllist)
 
-
-    # In[5]:
-
-
     while i <= int(points):
         print('## Point',i,',Trial',n)
         #x,y = grab_location(name) #add new location to CSV
@@ -96,10 +79,7 @@ def AutoXYTestWinCond(points,attempts,error):
         dict = {'X (mm)': [randxs[i-1]], 'Y (mm)': [randys[i-1]]} #add the destination point to the CSV every time
         df = pd.DataFrame(dict)
         df.to_csv('.\Results\%s.csv' % fulllist, mode='a', index=False, header=False)
-        
-        #if n == 5: #get away if not yet made it in 5 tries
-            #moveXY(circle_x-x,circle_y-y) #send the piezo back to the center
-        
+                
         dy = randys[i-1] - y
         moveXY(0,dy)
         x,y = grab_location('junk')

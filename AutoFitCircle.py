@@ -1,8 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
+#Function to read a circle motion and give the best fit
+#Return: center coordinates, radius, error
 
-# In[1]:
-
+#Last updated 05/03/2023 by RAS
 
 from vpython import * 
 from pypylon import pylon
@@ -33,11 +32,6 @@ import time
 import circle_fit as cf
 import matplotlib.colors as mcolors
 import config_constants as cc
-
-
-
-# In[2]:
-
 
 def read_circle():
     

@@ -1,5 +1,3 @@
-# timer.py
-
 import time
 
 class TimerError(Exception):

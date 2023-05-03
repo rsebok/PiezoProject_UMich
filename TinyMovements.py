@@ -1,3 +1,8 @@
+#These functions are used to move the positioner smaller distances by changing the frequency 
+#Input: voltage and distance to move
+
+#Last updated 05/03/2023 by RAS
+
 import pyvisa as visa
 import time
 import cv2
@@ -27,7 +32,6 @@ def tinymove_posX(voltage,x):
 
     print('posX',voltage,'Vpp',newt,'s')
 
-    #print(vi.query("*idn?"))
     print("Configuring C1")
     vi.write("c1:bswv frq, %s" %freq) #set the frequency of channel 1
     time.sleep(0.6)
@@ -35,7 +39,7 @@ def tinymove_posX(voltage,x):
     time.sleep(0.6)
     vi.write("c1:bswv amp, %s" %voltage) #set the amplitude
     time.sleep(0.6)
-    vi.write("c1:bswv sym, 0") #set the amplitude
+    vi.write("c1:bswv sym, 0") #set the symmetry
     time.sleep(0.6)
     vi.write("c1:bswv duty,75") #duty cycle
     time.sleep(0.6)
@@ -63,7 +67,6 @@ def tinymove_negX(voltage,x):
 
     print('negX',voltage,'Vpp',newt,'s')
 
-    #print(vi.query("*idn?"))
     print("Configuring C1")
     vi.write("c1:bswv frq, %s" %freq) #set the frequency of channel 1
     time.sleep(0.6)
@@ -71,7 +74,7 @@ def tinymove_negX(voltage,x):
     time.sleep(0.6)
     vi.write("c1:bswv amp, %s" %voltage) #set the amplitude
     time.sleep(0.6)
-    vi.write("c1:bswv sym, 100") #set the amplitude
+    vi.write("c1:bswv sym, 100") #set the symmetry
     time.sleep(0.6)
     vi.write("c1:bswv duty,75") #duty cycle
     time.sleep(0.6)
@@ -99,7 +102,6 @@ def tinymove_negY(voltage,y):
 
     print('negY',voltage,'Vpp',newt,'s')
 
-    #print(vi.query("*idn?"))
     print("Configuring C2")
     vi.write("c2:bswv frq, %s" %freq) #set the frequency of channel 1
     time.sleep(0.6)
@@ -107,7 +109,7 @@ def tinymove_negY(voltage,y):
     time.sleep(0.6)
     vi.write("c2:bswv amp, %s" %voltage) #set the amplitude
     time.sleep(0.6)
-    vi.write("c2:bswv sym, 0") #set the amplitude
+    vi.write("c2:bswv sym, 0") #set the symmetry
     time.sleep(0.6)
     vi.write("c2:bswv duty,75") #duty cycle
     time.sleep(0.6)
@@ -135,7 +137,6 @@ def tinymove_posY(voltage,y):
 
     print('posY',voltage,'Vpp',newt,'s')
 
-    #print(vi.query("*idn?"))
     print("Configuring C2")
     vi.write("c2:bswv frq, %s" %freq) #set the frequency of channel 1
     time.sleep(0.6)
@@ -144,7 +145,7 @@ def tinymove_posY(voltage,y):
     time.sleep(0.6)
     vi.write("c2:bswv amp, %s" %voltage) #set the amplitude
     time.sleep(0.6)
-    vi.write("c2:bswv sym, 100") #set the amplitude
+    vi.write("c2:bswv sym, 100") #set the symmetry
     time.sleep(0.6)
     vi.write("c2:bswv duty,75") #duty cycle
     time.sleep(0.6)

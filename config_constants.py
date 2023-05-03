@@ -1,4 +1,6 @@
-#piezo constants across system
+#Piezo constants across system
+
+#Last updated 05/03/2023 by RAS
 
 #speed of each channel
 speeds = dict(

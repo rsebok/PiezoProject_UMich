@@ -1,7 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
+#The GUI for the piezo positioner setup
+#Run this program from the Jupyter terminal
 
-# In[1]:
+#Last updated 05/03/2023 by RAS
 
 import pyvisa as visa
 import PySimpleGUI as sg
@@ -58,19 +58,19 @@ layout=[[sg.Text('~~~ Welcome to the U of Michigan piezo positioner. ~~~')],
         [sg.Column(col2), sg.Column(col1,element_justification='right')], 
         [sg.Button('Exit')]]
 
-# Create the Window
+#Create the Window
 window = sg.Window('Piezo GUI',layout,size=(650,650),element_justification='center')
-# Event Loop to process "events" and get the "values" of the inputs
+#Event Loop to process "events" and get the "values" of the inputs
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'Exit': # if user closes window or clicks cancel
         break
     if event == 'Power On':
-        os.system("cd C:\Program Files (x86)\PowerUSB && pwrusbcmd 1 1 0")
-        print("Amplifier and waveform generator set to: ON")
+        os.system("cd C:\Program Files (x86)\PowerUSB && pwrusbcmd 1 1 1")
+        print("All outlets set to: ON")
     if event == 'Power Off':
         os.system("cd C:\Program Files (x86)\PowerUSB && pwrusbcmd 0 0 0")
-        print("Amplifier and waveform generator set to: OFF")
+        print("All outlets set to: OFF")
     if event == 'Power Status':
         try:
             rm = visa.ResourceManager()
@@ -81,7 +81,9 @@ while True:
             print("No response from waveform generator. Power is most likely off.")
             
     if event == 'Start Video':
-        lv.LiveVid()
+        p1 = Process(target = afc.read_circle)
+        p1.start()
+        p1.join()
     if event == 'Grab Location':
         x,y = gb.grab_location('junk')
         print('Current coordinates (mm):',x,y)
@@ -139,10 +141,3 @@ while True:
     if event == 'AutoVelnegY':
         vel_negY(float(values['voltage']),float(values['time']),int(values['trials']))
 window.close()
-
-
-# In[ ]:
-
-
-
-

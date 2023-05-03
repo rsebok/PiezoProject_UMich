@@ -1,3 +1,8 @@
+#The function that ties together all of the different movement styles to best position the spine
+#Input: distance to move in x and y
+
+#Last updated 05/03/2023 by RAS
+
 import pyvisa as visa
 import time
 import cv2

@@ -1,3 +1,8 @@
+#The function to get the current location of the spine
+#Input: file save location
+
+#Last updated 05/03/2023 by RAS
+
 from vpython import * 
 from pypylon import pylon
 import cv2 as cv

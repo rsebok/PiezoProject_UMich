@@ -1,8 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
+#This function is used to run repeated tests of the effects of waveform characteristics on the distance moved
+#Input: waveform properties, return: start and end coordinates
 
-# In[2]:
-
+#Last updated 05/03/2023 by RAS
 
 import time
 import random
@@ -45,8 +44,6 @@ def auto_test(channel, symm, voltage, freq, duration, trials):
         if channel == 1:
             print('X', voltage, 'Vpp', duration, 's')
 
-            # C1 0 #neg B
-            # print(vi.query("*idn?"))
             print("Configuring C1")
             vi.write("c1:bswv frq, %s" % freq)  # set the frequency of channel 1
             time.sleep(0.6)
@@ -76,8 +73,6 @@ def auto_test(channel, symm, voltage, freq, duration, trials):
         if channel == 2:
             print('Y', voltage, 'Vpp', duration, 's')
 
-            # C1 0 #neg B
-            # print(vi.query("*idn?"))
             print("Configuring C2")
             vi.write("c2:bswv frq, %s" % freq)  # set the frequency of channel 1
             time.sleep(0.6)
@@ -104,17 +99,9 @@ def auto_test(channel, symm, voltage, freq, duration, trials):
 
             print(i)
 
-    print('## AutoTest complete.')  # end after all points attempted
+    print('## AutoTest complete.') 
     
     return xcoords, ycoords, x0coords, y0coords
-
-#if __name__ == '__main__':
-    #trials = int(input("Enter the number of trials: "))
-    #duration = float(input("Enter the duration of each trial in seconds: "))
-    #auto_test(trials, duration)
-
-
-# In[ ]:
 
 
 

@@ -1,3 +1,8 @@
+#These functions are used to move the positioner for a certain amount of time at a certain voltage
+#Input: voltage and time 
+
+#Last updated 05/03/2023 by RAS
+
 import pyvisa as visa
 import time
 import cv2
@@ -16,8 +21,6 @@ def move_posX(voltage,t):
     
     print('posX',voltage,'Vpp',t,'s')
         
-    #C1 0 #neg B
-    #print(vi.query("*idn?"))
     print("Configuring C1")
     vi.write("c1:bswv frq,10") #set the frequency of channel 1
     time.sleep(0.6)
@@ -25,7 +28,7 @@ def move_posX(voltage,t):
     time.sleep(0.6)
     vi.write("c1:bswv amp, %s" %voltage) #set the amplitude
     time.sleep(0.6)
-    vi.write("c1:bswv sym, 0") #set the amplitude
+    vi.write("c1:bswv sym, 0") #set the symmetry
     time.sleep(0.6)
     vi.write("c1:bswv duty,75") #duty cycle
     time.sleep(0.6)
@@ -49,9 +52,6 @@ def move_posY(voltage,t):
         
     print('posY',voltage,'Vpp',t,'s')
     
-
-    #C2 0 #neg Y
-    #print(vi.query("*idn?"))
     print("Configuring C2")
     vi.write("c2:bswv frq,10") #set the frequency of channel 1
     time.sleep(0.6)
@@ -59,7 +59,7 @@ def move_posY(voltage,t):
     time.sleep(0.6)
     vi.write("c2:bswv amp, %s" %voltage) #set the amplitude
     time.sleep(0.6)
-    vi.write("c2:bswv sym, 100") #set the amplitude
+    vi.write("c2:bswv sym, 100") #set the symmetry
     time.sleep(0.6)
     vi.write("c2:bswv duty,75") #duty cycle
     time.sleep(0.6)
@@ -83,8 +83,6 @@ def move_negX(voltage,t):
         
     print('negX',voltage,'Vpp',t,'s')
  
-    #C1 100 #pos B
-    #print(vi.query("*idn?"))
     print("Configuring C1")
     vi.write("c1:bswv frq,10") #set the frequency of channel 1
     time.sleep(0.6)
@@ -92,7 +90,7 @@ def move_negX(voltage,t):
     time.sleep(0.6)
     vi.write("c1:bswv amp, %s" %voltage) #set the amplitude
     time.sleep(0.6)
-    vi.write("c1:bswv sym, 100") #set the amplitude
+    vi.write("c1:bswv sym, 100") #set the symmetry
     time.sleep(0.6)
     vi.write("c1:bswv duty,75") #duty cycle
     time.sleep(0.6)
@@ -116,8 +114,6 @@ def move_negY(voltage,t):
         
     print('negY',voltage,'Vpp',t,'s')
  
-    #C2 100 #neg A
-    #print(vi.query("*idn?"))
     print("Configuring C2")
     vi.write("c2:bswv frq,10") #set the frequency of channel 1
     time.sleep(0.6)
@@ -125,7 +121,7 @@ def move_negY(voltage,t):
     time.sleep(0.6)
     vi.write("c2:bswv amp, %s" %voltage) #set the amplitude
     time.sleep(0.6)
-    vi.write("c2:bswv sym, 0") #set the amplitude
+    vi.write("c2:bswv sym, 0") #set the symmetry
     time.sleep(0.6)
     vi.write("c2:bswv duty,75") #duty cycle
     time.sleep(0.6)
