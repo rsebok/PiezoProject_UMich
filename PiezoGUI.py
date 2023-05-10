@@ -97,13 +97,13 @@ while True:
     if event == 'Move by XY':
         move.moveXY(float(values['x']),float(values['y']))
     if event == 'posX':
-        move_posX(float(values['voltage']),float(values['time']))
+        move_posX(float(values['x']))
     if event == 'posY':
-        move_posY(float(values['voltage']),float(values['time']))
+        move_posY(float(values['y']))
     if event == 'negX':
-        move_negX(float(values['voltage']),float(values['time']))
+        move_negX(float(values['x']))
     if event == 'negY':
-        move_negY(float(values['voltage']),float(values['time']))
+        move_negY(float(values['y']))
     if event == 'posXsteps':
         movesteps_posX(float(values['voltage']),float(values['steps']))
     if event == 'posYsteps':

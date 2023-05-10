@@ -1,7 +1,7 @@
 #These functions are used to move the positioner EVEN SMALLER distances by changing the frequency and voltage to the smallest usable values
 #Input: distance to move
 
-#Last updated 05/03/2023 by RAS
+#Last updated 05/10/2023 by RAS - went down to 0.01, 2
 
 import pyvisa as visa
 import time
@@ -23,10 +23,10 @@ def micromove_posX(x):
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
     newt = 1
-    freq = 0.1
-    voltage = 2.5
+    freq = 0.01
+    voltage = 2
 
-    print('posX',voltage,'Vpp',newt,'s')
+    print('posX,',voltage,'Vpp,',freq,"Hz,",newt,'s')
 
     print("Configuring C1")
     vi.write("c1:bswv frq, %s" %freq) #set the frequency of channel 1
@@ -55,10 +55,10 @@ def micromove_negX(x):
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
     newt = 1
-    freq = 0.1
-    voltage = 2.5
+    freq = 0.01
+    voltage = 2
 
-    print('negX',voltage,'Vpp',newt,'s')
+    print('negX,',voltage,'Vpp,',freq,"Hz,",newt,'s')
 
     print("Configuring C1")
     vi.write("c1:bswv frq, %s" %freq) #set the frequency of channel 1
@@ -87,10 +87,10 @@ def micromove_negY(y):
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
     newt = 1
-    freq = 0.1
-    voltage = 2.5
+    freq = 0.01
+    voltage = 2
 
-    print('negY',voltage,'Vpp',newt,'s')
+    print('negY,',voltage,'Vpp,',freq,"Hz,",newt,'s')
 
     print("Configuring C2")
     vi.write("c2:bswv frq, %s" %freq) #set the frequency of channel 1
@@ -119,10 +119,10 @@ def micromove_posY(y):
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
     newt = 1
-    freq = 0.1
-    voltage = 2.5
+    freq = 0.01
+    voltage = 2
 
-    print('posY',voltage,'Vpp',newt,'s')
+    print('posY,',voltage,'Vpp,',freq,"Hz,",newt,'s')
 
     print("Configuring C2")
     vi.write("c2:bswv frq, %s" %freq) #set the frequency of channel 1

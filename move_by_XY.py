@@ -1,7 +1,7 @@
 #The function that ties together all of the different movement styles to best position the spine
 #Input: distance to move in x and y
 
-#Last updated 05/03/2023 by RAS
+#Last updated 05/04/2023 by RAS
 
 import pyvisa as visa
 import time
@@ -18,76 +18,60 @@ from MicroMovements import micromove_negX,micromove_posX,micromove_negY,micromov
 
 def moveXY(x,y):
     
-    rm=visa.ResourceManager()
-    li=rm.list_resources()
-    vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
-
-    negX_speed = cc.speeds['negX']
-    negY_speed = cc.speeds['negY']
-    posY_speed = cc.speeds['posY']
-    posX_speed = cc.speeds['posX']
-    voltage = cc.voltage
-
-    
-    print(x,y)
-    
-    #Use this section to move in pos x
-    if x > 0:
-        t = abs(x/posX_speed)
-        if abs(x) <= 0.005:
-            return
-        elif abs(x) <= 0.03:
-            micromove_posX(x)
-        elif abs(x) <= 0.05:
-            micromove_posX(x)
-            micromove_posX(x)
-        elif abs(x) <= 0.3:
-            tinymove_posX(voltage,x)
-        else:
-            move_posX(voltage,t)
-
-    #Use this section to move in neg x
-    if x < 0:
-        t = abs(x/negX_speed)
-        if abs(x) <= 0.005:
-            return
-        elif abs(x) <= 0.03:
-            micromove_negX(x)
-        elif abs(x) <= 0.05:
-            micromove_negX(x)
-            micromove_negX(x)
-        elif abs(x) <= 0.3:
-            tinymove_negX(voltage,x)
-        else:
-            move_negX(voltage,t)
-        
-    #Use this section to move in pos y
+    print("Attempting to move by:",x,y)
+     #Use this section to move in pos y
     if y > 0:
-        t = abs(y/posY_speed)
         if abs(y) <= 0.005:
             return
-        elif abs(y) <= 0.03:
+        elif abs(y) <= 0.02:
             micromove_posY(y)
-        elif abs(y) <= 0.05:
+        elif abs(y) <= 0.03:
             micromove_posY(y)
             micromove_posY(y)
         elif abs(y) <= 0.3:
-            tinymove_posY(voltage,y)
+            tinymove_posY(y)
         else:
-            move_posY(voltage,t)
+            move_posY(y)
 
     #Use this section to move in neg y
     if y < 0:
-        t = abs(y/negY_speed)
         if abs(y) <= 0.005:
             return
-        elif abs(y) <= 0.03:
+        elif abs(y) <= 0.02:
             micromove_negY(y)
-        elif abs(y) <= 0.05:
+        elif abs(y) <= 0.03:
             micromove_negY(y)
             micromove_negY(y)
         elif abs(y) <= 0.3:
-            tinymove_negY(voltage,y)
+            tinymove_negY(y)
         else:
-            move_negY(voltage,t)
-        
+            move_negY(y)
+            
+    #Use this section to move in pos x
+    if x > 0:
+        if abs(x) <= 0.005:
+            return
+        elif abs(x) <= 0.02:
+            micromove_posX(x)
+        elif abs(x) <= 0.03:
+            micromove_posX(x)
+            micromove_posX(x)
+        elif abs(x) <= 0.3:
+            tinymove_posX(x)
+        else:
+            move_posX(x)
+
+    #Use this section to move in neg x
+    if x < 0:
+        if abs(x) <= 0.005:
+            return
+        elif abs(x) <= 0.02:
+            micromove_negX(x)
+        elif abs(x) <= 0.03:
+            micromove_negX(x)
+            micromove_negX(x)
+        elif abs(x) <= 0.3:
+            tinymove_negX(x)
+        else:
+            move_negX(x)
+

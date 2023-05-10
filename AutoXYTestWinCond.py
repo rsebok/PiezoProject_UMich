@@ -1,7 +1,7 @@
 #Function to test the positioning with multiple attempts
 #Input: number of random points to attempt, attempts allowed, and acceptable error (win condition)
 
-#Last updated 05/03/2023 by RAS
+#Last updated 05/09/2023 by RAS - switched the order of x and y
 
 import time
 from timer import Timer
@@ -34,6 +34,7 @@ def AutoXYTestWinCond(points,attempts,error):
     fulllist = name+'\FullList'
     winlist = name+'\WinList'
     losslist = name+'\LossList'
+    errorlist = name+'\ErrorList'
     print(fulllist)
     x = 0
     y = 0
@@ -79,14 +80,14 @@ def AutoXYTestWinCond(points,attempts,error):
         dict = {'X (mm)': [randxs[i-1]], 'Y (mm)': [randys[i-1]]} #add the destination point to the CSV every time
         df = pd.DataFrame(dict)
         df.to_csv('.\Results\%s.csv' % fulllist, mode='a', index=False, header=False)
-                
-        dy = randys[i-1] - y
-        moveXY(0,dy)
+        
+        dx = randxs[i-1] - x
+        moveXY(dx,0)
         x,y = grab_location('junk')
         
         if np.sqrt((float(randxs[i-1])-float(x))**2 + (float(randys[i-1])-float(y))**2) > error: #check if destination reached
-            dx = randxs[i-1] - x
-            moveXY(dx,0)
+            dy = randys[i-1] - y
+            moveXY(0,dy)
 
         x,y = grab_location(fulllist) #grab 'final' locaion
         
@@ -94,14 +95,20 @@ def AutoXYTestWinCond(points,attempts,error):
         if np.sqrt((float(randxs[i-1])-float(x))**2 + (float(randys[i-1])-float(y))**2) <= error: #check if destination reached
             tries.append(n)
             print('## The error after this trial was:', np.sqrt((float(randxs[i-1])-float(x))**2 + (float(randys[i-1])-float(y))**2),'mm')
-            i += 1 #go to next point
-            n = 1 #reset trial counter
-            w += 1
-            print("## Win condition met. That makes",w,"wins.")
 
             dict = {'X (mm)': [x], 'Y (mm)': [y]} #add win point
             df = pd.DataFrame(dict)
             df.to_csv('.\Results\%s.csv' % winlist, mode='a', index=False, header=False)
+            
+            dict = {'Error (mm)': [np.sqrt((float(randxs[i-1])-float(x))**2 + (float(randys[i-1])-float(y))**2)]} #add final error
+            df = pd.DataFrame(dict)
+            df.to_csv('.\Results\%s.csv' % errorlist, mode='a', index=False, header=False)
+            
+            i += 1 #go to next point
+            n = 1 #reset trial counter
+            w += 1
+            
+            print("## Win condition met. That makes",w,"wins.")
             
         else:   
             print('## The error after this trial was:', np.sqrt((float(randxs[i-1])-float(x))**2 + (float(randys[i-1])-float(y))**2),'mm')
@@ -109,13 +116,18 @@ def AutoXYTestWinCond(points,attempts,error):
             n += 1 #increase trial count
 
         if n > int(attempts):
-            print('## Attempt limit reached. Moving on to the next point...') #unless trial limit reached, move on to next point
-            n = 1 #reset trial counter
-            i += 1 #go to next point
+            print('## Attempt limit reached. Moving on to the next point...') #unless trial limit reached
 
-            dict = {'X (mm)': [x], 'Y (mm)': [y]} #add win point
+            dict = {'X (mm)': [x], 'Y (mm)': [y]} #add loss point
             df = pd.DataFrame(dict)
             df.to_csv('.\Results\%s.csv' % losslist, mode='a', index=False, header=False)
+            
+            dict = {'Error (mm)': [np.sqrt((float(randxs[i-1])-float(x))**2 + (float(randys[i-1])-float(y))**2)]} #add final error
+            df = pd.DataFrame(dict)
+            df.to_csv('.\Results\%s.csv' % errorlist, mode='a', index=False, header=False)
+            
+            n = 1 #reset trial count
+            i += 1 #go to next point
 
     else:
         print('## AutoTest complete.') #end after all points attempted
