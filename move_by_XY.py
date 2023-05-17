@@ -1,7 +1,7 @@
 #The function that ties together all of the different movement styles to best position the spine
 #Input: distance to move in x and y
 
-#Last updated 05/04/2023 by RAS
+#Last updated 05/15/2023 by RAS
 
 import pyvisa as visa
 import time
@@ -25,7 +25,7 @@ def moveXY(x,y):
             return
         elif abs(y) <= 0.02:
             micromove_posY(y)
-        elif abs(y) <= 0.03:
+        elif abs(y) <= 0.04:
             micromove_posY(y)
             micromove_posY(y)
         elif abs(y) <= 0.3:
@@ -39,7 +39,7 @@ def moveXY(x,y):
             return
         elif abs(y) <= 0.02:
             micromove_negY(y)
-        elif abs(y) <= 0.03:
+        elif abs(y) <= 0.04:
             micromove_negY(y)
             micromove_negY(y)
         elif abs(y) <= 0.3:
@@ -53,7 +53,7 @@ def moveXY(x,y):
             return
         elif abs(x) <= 0.02:
             micromove_posX(x)
-        elif abs(x) <= 0.03:
+        elif abs(x) <= 0.04:
             micromove_posX(x)
             micromove_posX(x)
         elif abs(x) <= 0.3:
@@ -67,7 +67,7 @@ def moveXY(x,y):
             return
         elif abs(x) <= 0.02:
             micromove_negX(x)
-        elif abs(x) <= 0.03:
+        elif abs(x) <= 0.04:
             micromove_negX(x)
             micromove_negX(x)
         elif abs(x) <= 0.3:

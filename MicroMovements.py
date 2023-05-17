@@ -1,7 +1,7 @@
 #These functions are used to move the positioner EVEN SMALLER distances by changing the frequency and voltage to the smallest usable values
 #Input: distance to move
 
-#Last updated 05/10/2023 by RAS - went down to 0.01, 2
+#Last updated 05/15/2023 by RAS - went up to 2 V and 0.5 s 
 
 import pyvisa as visa
 import time
@@ -22,7 +22,7 @@ def micromove_posX(x):
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 1
+    newt = 0.5
     freq = 0.01
     voltage = 2
 
@@ -54,7 +54,7 @@ def micromove_negX(x):
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 1
+    newt = 0.5
     freq = 0.01
     voltage = 2
 
@@ -86,7 +86,7 @@ def micromove_negY(y):
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 1
+    newt = 0.5
     freq = 0.01
     voltage = 2
 
@@ -118,7 +118,7 @@ def micromove_posY(y):
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 1
+    newt = 0.5
     freq = 0.01
     voltage = 2
 
