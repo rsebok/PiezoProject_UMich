@@ -1,11 +1,11 @@
 # PiezoProject_UMich
 Repository for Python code relating to the University of Michigan piezo positioner test stand.
 
-Last updated: 05/17/2023
+Last updated: 05/18/2023
 
 # Files
 
-If there are two files with the same name except one is a jupyter notebook, assume they serve the same overall function.
+If there are two files with the same name except one is a jupyter notebook, assume they serve the same purpose.
 
 `AutoCircleCopyRS.py`: function to move the spine along the maximum range 
 
