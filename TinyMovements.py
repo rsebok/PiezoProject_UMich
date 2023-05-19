@@ -1,7 +1,7 @@
 #These functions are used to move the positioner smaller distances by changing the frequency 
-#Input: voltage and distance to move
+#Input: distance to move
 
-#Last updated 05/03/2023 by RAS
+#Last updated 05/04/2023 by RAS
 
 import pyvisa as visa
 import time
@@ -16,13 +16,13 @@ negY_speed = cc.speeds['negY']
 posY_speed = cc.speeds['posY']
 posX_speed = cc.speeds['posX']
 
-def tinymove_posX(voltage,x):
+def tinymove_posX(x):
     #Use this section to move in pos x
     rm=visa.ResourceManager()
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-
+    voltage = cc.voltage
     newt = 1
     freq = abs(x/(posX_speed/10))/newt
 
@@ -30,7 +30,7 @@ def tinymove_posX(voltage,x):
         print('That voltage is too high!')
         return
 
-    print('posX',voltage,'Vpp',newt,'s')
+    print('posX,',voltage,'Vpp,',freq,"Hz,",newt,'s')
 
     print("Configuring C1")
     vi.write("c1:bswv frq, %s" %freq) #set the frequency of channel 1
@@ -52,12 +52,13 @@ def tinymove_posX(voltage,x):
 
     print('Tiny move done.')
     
-def tinymove_negX(voltage,x):
+def tinymove_negX(x):
     #Use this section to move in neg x
     rm=visa.ResourceManager()
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
+    voltage = cc.voltage
     newt = 1
     freq = abs(x/(negX_speed/10))/newt
 
@@ -65,7 +66,7 @@ def tinymove_negX(voltage,x):
         print('That voltage is too high!')
         return
 
-    print('negX',voltage,'Vpp',newt,'s')
+    print('negX,',voltage,'Vpp,',freq,"Hz,",newt,'s')
 
     print("Configuring C1")
     vi.write("c1:bswv frq, %s" %freq) #set the frequency of channel 1
@@ -87,12 +88,13 @@ def tinymove_negX(voltage,x):
 
     print('Tiny move done.')
 
-def tinymove_negY(voltage,y):
+def tinymove_negY(y):
     #Use this section to move in pos y
     rm=visa.ResourceManager()
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
+    voltage = cc.voltage
     newt = 1
     freq = abs(y/(posY_speed/10))/newt
 
@@ -100,7 +102,7 @@ def tinymove_negY(voltage,y):
         print('That voltage is too high!')
         return
 
-    print('negY',voltage,'Vpp',newt,'s')
+    print('negY,',voltage,'Vpp,',freq,"Hz,",newt,'s')
 
     print("Configuring C2")
     vi.write("c2:bswv frq, %s" %freq) #set the frequency of channel 1
@@ -122,12 +124,13 @@ def tinymove_negY(voltage,y):
 
     print('Tiny move done.')
 
-def tinymove_posY(voltage,y):
+def tinymove_posY(y):
     #Use this section to move in neg y
     rm=visa.ResourceManager()
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
+    voltage = cc.voltage
     newt = 1
     freq = abs(y/(negY_speed/10))/newt
 
@@ -135,7 +138,7 @@ def tinymove_posY(voltage,y):
         print('That voltage is too high!')
         return
 
-    print('posY',voltage,'Vpp',newt,'s')
+    print('posY,',voltage,'Vpp,',freq,"Hz,",newt,'s')
 
     print("Configuring C2")
     vi.write("c2:bswv frq, %s" %freq) #set the frequency of channel 1

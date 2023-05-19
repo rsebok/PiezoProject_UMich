@@ -1,11 +1,10 @@
 #Function to test the positioning with multiple attempts
-#Input: number of random points to attempt, attempts allowed, and acceptable error (win condition)
+#Input: attempts allowed, and acceptable error (win condition)
 
-#Last updated 05/09/2023 by RAS - switched the order of x and y
+#Last updated 05/19/2023 by RAS - created test
 
 import time
 from timer import Timer
-import random
 import math
 import array
 import pandas as pd
@@ -16,11 +15,14 @@ from AutoCircleCopyRS import move_circle
 from move_by_XY import moveXY
 from GrabLocation import grab_location
 import config_constants as cc
+import matplotlib.pyplot as plt
+import itertools
+import sys
 
 
-def AutoXYTestWinCond(points,attempts,error):
+def AutoXYTestGRID(attempts,error):
     
-    print('## Starting an XY test for',points,'points with a win condition of',error,'mm and a max attempt limit of',attempts)
+    print('## Starting an XY test for a 60 point grid with a win condition of',error,'mm and a max attempt limit of',attempts)
     timer = Timer()
     timer.start()
     
@@ -38,30 +40,54 @@ def AutoXYTestWinCond(points,attempts,error):
     print(fulllist)
     x = 0
     y = 0
+    
+    circle_x = cc.circle['circle_x'] 
+    circle_y = cc.circle['circle_y']    
+    circle_r = cc.circle['circle_r']
 
-    #generate random movetable
+    #inserted the grid points code by FAO
     i = 1
-    randxs = []
-    randys = []
+    
+    def create_target(grid, filename=None, plot=False, overwrite=False, verbose=False):
+        """
+        Usage: create_target(np.linspace(-6.0, 6.0, 8), 
+                            filename='../movetables/<NAME>', *)
 
-    while i <= int(points):
-        circle_x = cc.circle['circle_x'] 
-        circle_y = cc.circle['circle_y']    
-        circle_r = cc.circle['circle_r']
-        alpha = 2 * math.pi * random.random() #random angle
-        r = circle_r * math.sqrt(random.random()) #random radius
-        randx = r * math.cos(alpha) + circle_x #calculating coordinates
-        randy = r * math.sin(alpha) + circle_y
-        #print("Random point", (randx, randy))
-        randxs.append(randx)
-        #print('Random x:',randxs)
-        randys.append(randy)
-        #print('Random y:',randys)
+        grid (list, np array): 
+            e.g. np.linspace(-5.5, 5.5, 6) creates a 32 points xy
+        """
+        xtgt = []
+        ytgt = []
+        for i,j in list(itertools.product(grid, grid)):
+            _dist = np.hypot(i,j)
+            if _dist > 2.5:
+                if verbose: print(f"out of reach: {i:+.2f}, {j:+.2f}, {_dist:.2f}")
+            else:
+                xtgt.append(i+circle_x)
+                ytgt.append(j+circle_y)
 
-        i += 1
-    else:
-        print('Random x:',randxs)
-        print('Random y:',randys)
+        print(f"Produced {len(xtgt)} targets")
+
+        if plot:
+            plt.figure(dpi=100)
+            plt.plot(xtgt, ytgt, '+', ms=8)
+            plt.plot(0,0, 'ro', zorder=0, alpha=0.4)
+            plt.gca().set_aspect('equal')
+
+        if filename is None:
+            print("filename is None")
+        elif os.path.isfile(filename) and (not overwrite):    
+            print(f"\nERROR: File {filename} exists")
+        else: 
+            np.savetxt(filename, np.c_[xtgt, ytgt])
+
+        return xtgt, ytgt
+       
+    goalxs, goalys = create_target(np.linspace(-2.5,2.5,10))
+    #end FAO code
+
+    print('Goal x:',goalxs)
+    print('Goal y:',goalys)
 
     n = 1 #start at trial 1
     i = 1 #start at point 1
@@ -72,36 +98,36 @@ def AutoXYTestWinCond(points,attempts,error):
     moveXY(circle_x-x,circle_y-y) #send the piezo back to the center
     x,y = grab_location(fulllist)
 
-    while i <= int(points):
+    while i <= int(len(goalxs)):
         print('## Point',i,',Trial',n)
         #x,y = grab_location(name) #add new location to CSV
         #time.sleep(1)
 
-        dict = {'X (mm)': [randxs[i-1]], 'Y (mm)': [randys[i-1]]} #add the destination point to the CSV every time
+        dict = {'X (mm)': [goalxs[i-1]], 'Y (mm)': [goalys[i-1]]} #add the destination point to the CSV every time
         df = pd.DataFrame(dict)
         df.to_csv('.\Results\%s.csv' % fulllist, mode='a', index=False, header=False)
         
-        dx = randxs[i-1] - x
+        dx = goalxs[i-1] - x
         moveXY(dx,0)
         x,y = grab_location('junk')
         
-        if np.sqrt((float(randxs[i-1])-float(x))**2 + (float(randys[i-1])-float(y))**2) > error: #check if destination reached
+        if np.sqrt((float(goalxs[i-1])-float(x))**2 + (float(goalys[i-1])-float(y))**2) > error: #check if destination reached
             
-            dy = randys[i-1] - y
+            dy = goalys[i-1] - y
             moveXY(0,dy)
 
         x,y = grab_location(fulllist) #grab 'final' locaion
         
         
-        if np.sqrt((float(randxs[i-1])-float(x))**2 + (float(randys[i-1])-float(y))**2) <= error: #check if destination reached
+        if np.sqrt((float(goalxs[i-1])-float(x))**2 + (float(goalys[i-1])-float(y))**2) <= error: #check if destination reached
             tries.append(n)
-            print('## The error after this trial was:', np.sqrt((float(randxs[i-1])-float(x))**2 + (float(randys[i-1])-float(y))**2),'mm')
+            print('## The error after this trial was:', np.sqrt((float(goalxs[i-1])-float(x))**2 + (float(goalys[i-1])-float(y))**2),'mm')
 
             dict = {'X (mm)': [x], 'Y (mm)': [y]} #add win point
             df = pd.DataFrame(dict)
             df.to_csv('.\Results\%s.csv' % winlist, mode='a', index=False, header=False)
             
-            dict = {'Error (mm)': [np.sqrt((float(randxs[i-1])-float(x))**2 + (float(randys[i-1])-float(y))**2)]} #add final error
+            dict = {'Error (mm)': [np.sqrt((float(goalxs[i-1])-float(x))**2 + (float(goalys[i-1])-float(y))**2)]} #add final error
             df = pd.DataFrame(dict)
             df.to_csv('.\Results\%s.csv' % errorlist, mode='a', index=False, header=False)
             
@@ -112,7 +138,7 @@ def AutoXYTestWinCond(points,attempts,error):
             print("## Win condition met. That makes",w,"wins.")
             
         else:   
-            print('## The error after this trial was:', np.sqrt((float(randxs[i-1])-float(x))**2 + (float(randys[i-1])-float(y))**2),'mm')
+            print('## The error after this trial was:', np.sqrt((float(goalxs[i-1])-float(x))**2 + (float(goalys[i-1])-float(y))**2),'mm')
             print('## Trying this point again...') #else attempt point again
             n += 1 #increase trial count
 
@@ -123,7 +149,7 @@ def AutoXYTestWinCond(points,attempts,error):
             df = pd.DataFrame(dict)
             df.to_csv('.\Results\%s.csv' % losslist, mode='a', index=False, header=False)
             
-            dict = {'Error (mm)': [np.sqrt((float(randxs[i-1])-float(x))**2 + (float(randys[i-1])-float(y))**2)]} #add final error
+            dict = {'Error (mm)': [np.sqrt((float(goalxs[i-1])-float(x))**2 + (float(goalys[i-1])-float(y))**2)]} #add final error
             df = pd.DataFrame(dict)
             df.to_csv('.\Results\%s.csv' % errorlist, mode='a', index=False, header=False)
             
@@ -137,7 +163,7 @@ def AutoXYTestWinCond(points,attempts,error):
     def Average(lst):
         return sum(lst) / len(lst)
 
-    print('## Final win count:',w,'/',points,"with an error of:",error,"mm.")
+    print('## Final win count:',w,'/',len(goalxs),"with an error of:",error,"mm.")
     print('## The maximum tries for a single win was',max(tries),'and the minimum was',min(tries),'.')
     print('## The average number of tries per win was',Average(tries),'.')
     print('## Your results are saved as:',name)

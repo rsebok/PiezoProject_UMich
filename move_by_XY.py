@@ -18,60 +18,67 @@ from MicroMovements import micromove_negX,micromove_posX,micromove_negY,micromov
 
 def moveXY(x,y):
     
-    print("Attempting to move by:",x,y)
-     #Use this section to move in pos y
-    if y > 0:
-        if abs(y) <= 0.005:
-            return
-        elif abs(y) <= 0.02:
-            micromove_posY(y)
-        elif abs(y) <= 0.04:
-            micromove_posY(y)
-            micromove_posY(y)
-        elif abs(y) <= 0.3:
-            tinymove_posY(y)
-        else:
-            move_posY(y)
-
-    #Use this section to move in neg y
-    if y < 0:
-        if abs(y) <= 0.005:
-            return
-        elif abs(y) <= 0.02:
-            micromove_negY(y)
-        elif abs(y) <= 0.04:
-            micromove_negY(y)
-            micromove_negY(y)
-        elif abs(y) <= 0.3:
-            tinymove_negY(y)
-        else:
-            move_negY(y)
+    print("## Attempting to move by:",x,y)
+     
             
     #Use this section to move in pos x
     if x > 0:
-        if abs(x) <= 0.005:
+        if abs(x) <= cc.min_move:
+            print("## Requested move is too small.")
             return
-        elif abs(x) <= 0.02:
+        elif abs(x) <= cc.micro_max:
             micromove_posX(x)
-        elif abs(x) <= 0.04:
+        elif abs(x) <= cc.double_micro_max:
             micromove_posX(x)
             micromove_posX(x)
-        elif abs(x) <= 0.3:
+        elif abs(x) <= cc.tiny_max:
             tinymove_posX(x)
         else:
             move_posX(x)
 
     #Use this section to move in neg x
     if x < 0:
-        if abs(x) <= 0.005:
+        if abs(x) <= cc.min_move:
+            print("## Requested move is too small.")
             return
-        elif abs(x) <= 0.02:
+        elif abs(x) <= cc.micro_max:
             micromove_negX(x)
-        elif abs(x) <= 0.04:
+        elif abs(x) <= cc.double_micro_max:
             micromove_negX(x)
             micromove_negX(x)
-        elif abs(x) <= 0.3:
+        elif abs(x) <= cc.tiny_max:
             tinymove_negX(x)
         else:
             move_negX(x)
+       
+    
+    if y > 0:
+        if abs(y) <= cc.min_move:
+            print("## Requested move is too small.")
+            return
+        elif abs(y) <= cc.micro_max:
+            micromove_posY(y)
+        elif abs(y) <= cc.double_micro_max:
+            micromove_posY(y)
+            micromove_posY(y)
+        elif abs(y) <= cc.tiny_max:
+            tinymove_posY(y)
+        else:
+            move_posY(y)
+
+    #Use this section to move in neg y
+    if y < 0:
+        if abs(y) <= cc.min_move:
+            print("## Requested move is too small.")
+            return
+        elif abs(y) <= cc.micro_max:
+            micromove_negY(y)
+        elif abs(y) <= cc.double_micro_max:
+            micromove_negY(y)
+            micromove_negY(y)
+        elif abs(y) <= cc.tiny_max:
+            tinymove_negY(y)
+        else:
+            move_negY(y)
+     
 

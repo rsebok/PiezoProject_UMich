@@ -14,11 +14,13 @@ from MovementsSteps import movesteps_negX,movesteps_posX,movesteps_negY,movestep
 import AutoCircleCopyRS as autocircle
 import AutoXYTest as xy
 import AutoXYTestWinCond as xywc
+import AutoXYTestGRID as xygrid
 from AutoVelocityTest import vel_posX,vel_negX,vel_posY,vel_negY
 import GrabLocation as gb
 import AutoFitCircle as afc
 import move_by_XY as move
 import config_constants as cc
+import emailRAS as em
 
 
 sg.theme('DarkPurple')   # Add a touch of color
@@ -32,7 +34,9 @@ col1 = [[sg.Text('X :'), sg.Input(key='x',size=(10))],
         [sg.Text('Trials:'), sg.Input(key='trials',size=(10))],
         [sg.Text('# of Points:'), sg.Input(key='points',size=(10))],
         [sg.Text('Acceptable Error:'), sg.Input(key='error',size=(10))],
-        [sg.Text('Max Attempts:'), sg.Input(key='attempts',size=(10))]]
+        [sg.Text('Max Attempts:'), sg.Input(key='attempts',size=(10))],
+        [sg.Checkbox('Email RAS ?', default=False, key='email')]
+        ]
 
 col2 = [[sg.Text(' ')],
         [sg.Text('Quick info (no inputs required):')],
@@ -45,7 +49,7 @@ col2 = [[sg.Text(' ')],
         [sg.Button('posXsteps'),sg.Button('posYsteps'),sg.Button('negXsteps'),sg.Button('negYsteps')],
         [sg.Text(' ')],
         [sg.Text('Run some analysis:')],
-        [sg.Button('AutoXYTest'),sg.Button('AutoXYTestWinCond')],
+        [sg.Button('AutoXYTest'),sg.Button('AutoXYTestWinCond'),sg.Button('AutoXYTestGRID')],
         [sg.Button('AutoVelposX'),sg.Button('AutoVelposY'),sg.Button('AutoVelnegX'),sg.Button('AutoVelnegY')],
         [sg.Text(' ')],
         [sg.Text('Power options:')],
@@ -79,7 +83,8 @@ while True:
             print("Waveform generator response detected. Power is on.")
         except visa.errors.VisaIOError:
             print("No response from waveform generator. Power is most likely off.")
-            
+    
+    #quick analysis        
     if event == 'Start Video':
         p1 = Process(target = afc.read_circle)
         p1.start()
@@ -87,31 +92,6 @@ while True:
     if event == 'Grab Location':
         x,y = gb.grab_location('junk')
         print('Current coordinates (mm):',x,y)
-    if event == 'Move to XY':
-        x,y = gb.grab_location('junk')
-        dy = float(values['y']) - y
-        move.moveXY(0,dy)
-        x,y = gb.grab_location('junk')
-        dx = float(values['x']) - x
-        move.moveXY(dx,0)
-    if event == 'Move by XY':
-        move.moveXY(float(values['x']),float(values['y']))
-    if event == 'posX':
-        move_posX(float(values['x']))
-    if event == 'posY':
-        move_posY(float(values['y']))
-    if event == 'negX':
-        move_negX(float(values['x']))
-    if event == 'negY':
-        move_negY(float(values['y']))
-    if event == 'posXsteps':
-        movesteps_posX(float(values['voltage']),float(values['steps']))
-    if event == 'posYsteps':
-        movesteps_posY(float(values['voltage']),float(values['steps']))
-    if event == 'negXsteps':
-        movesteps_negX(float(values['voltage']),float(values['steps']))
-    if event == 'negYsteps':
-        movesteps_negY(float(values['voltage']),float(values['steps']))
     if event == 'Run Circle':
         autocircle.move_circle()
     if event == 'Max Range Fit':
@@ -128,16 +108,102 @@ while True:
         x,y = gb.grab_location('junk')
         dx = cc.circle['circle_x'] - x
         move.moveXY(dx,0)
+    
+    #functions
+    if event == 'Move to XY':
+        try:
+            x,y = gb.grab_location('junk')
+            dy = float(values['y']) - y
+            move.moveXY(0,dy)
+            x,y = gb.grab_location('junk')
+            dx = float(values['x']) - x
+            move.moveXY(dx,0)
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: X, Y.")
+    if event == 'Move by XY':
+        try:
+            move.moveXY(float(values['x']),float(values['y']))
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: X, Y.")
+    if event == 'posX':
+        try:
+            move_posX(float(values['x']))
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: X.")
+    if event == 'posY':
+        try:
+            move_posY(float(values['y']))
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: Y.")
+    if event == 'negX':
+        try:
+            move_negX(float(values['x']))
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: X.")
+    if event == 'negY':
+        try:
+            move_negY(float(values['y']))
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: Y.")
+    if event == 'posXsteps':
+        try:
+            movesteps_posX(float(values['voltage']),float(values['steps']))
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: Voltage, Steps.")
+    if event == 'posYsteps':
+        try:
+            movesteps_posY(float(values['voltage']),float(values['steps']))
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: Voltage, Steps.")
+    if event == 'negXsteps':
+        try:
+            movesteps_negX(float(values['voltage']),float(values['steps']))
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: Voltage, Steps.")
+    if event == 'negYsteps':
+        try:
+            movesteps_negY(float(values['voltage']),float(values['steps']))
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: Voltage, Steps.")
+    
+    #testing
     if event == 'AutoXYTest':
-        xy.AutoXYTest(int(values['points']))
+        try:
+            xy.AutoXYTest(int(values['points']))
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: # of Points.")
     if event == 'AutoXYTestWinCond':
-        xywc.AutoXYTestWinCond(int(values['points']),int(values['attempts']),float(values['error']))
+        try:
+            xywc.AutoXYTestWinCond(int(values['points']),int(values['attempts']),float(values['error']))
+            if values['email'] == True:
+                em.send_email()
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: # of Points, Max Attempts, Acceptable Error.")
+    if event == 'AutoXYTestGRID':
+        try:
+            xygrid.AutoXYTestGRID(int(values['attempts']),float(values['error']))
+            if values['email'] == True:
+                em.send_email()
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: Max Attempts, Acceptable Error.")
     if event == 'AutoVelposX':
-        vel_posX(float(values['voltage']),float(values['time']),int(values['trials']))
+        try:
+            vel_posX(float(values['voltage']),float(values['time']),int(values['trials']))
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: Voltage, Time, Trials.")
     if event == 'AutoVelposY':
-        vel_posY(float(values['voltage']),float(values['time']),int(values['trials']))
+        try:
+            vel_posY(float(values['voltage']),float(values['time']),int(values['trials']))
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: Voltage, Time, Trials.")
     if event == 'AutoVelnegX':
-        vel_negX(float(values['voltage']),float(values['time']),int(values['trials']))
+        try:
+            vel_negX(float(values['voltage']),float(values['time']),int(values['trials']))
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: Voltage, Time, Trials.")
     if event == 'AutoVelnegY':
-        vel_negY(float(values['voltage']),float(values['time']),int(values['trials']))
+        try:
+            vel_negY(float(values['voltage']),float(values['time']),int(values['trials']))
+        except:
+            print("## FAILED. Double check that power is on and camera is closed. Inputs required: Voltage, Time, Trials.")
 window.close()

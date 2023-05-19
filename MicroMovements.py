@@ -1,7 +1,7 @@
 #These functions are used to move the positioner EVEN SMALLER distances by changing the frequency and voltage to the smallest usable values
 #Input: distance to move
 
-#Last updated 05/15/2023 by RAS - went up to 2 V and 0.5 s 
+#Last updated 05/18/2023 by RAS - moved the numbers into the config folder
 
 import pyvisa as visa
 import time
@@ -15,25 +15,27 @@ negX_speed = cc.speeds['negX']
 negY_speed = cc.speeds['negY']
 posY_speed = cc.speeds['posY']
 posX_speed = cc.speeds['posX']
+newt = cc.micro_time
+freq = cc.micro_freq
+voltage_posX = cc.micro_voltage_posX
+voltage_negX = cc.micro_voltage_negX
+voltage_posY = cc.micro_voltage_posY
+voltage_negY = cc.micro_voltage_negY
 
 def micromove_posX(x):
     #Use this section to move in pos x
     rm=visa.ResourceManager()
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
-    
-    newt = 0.5
-    freq = 0.01
-    voltage = 2
 
-    print('posX,',voltage,'Vpp,',freq,"Hz,",newt,'s')
+    print('posX,',voltage_posX,'Vpp,',freq,"Hz,",newt,'s')
 
     print("Configuring C1")
     vi.write("c1:bswv frq, %s" %freq) #set the frequency of channel 1
     time.sleep(0.6)
     vi.write("c1:bswv wvtp,ramp") #set the type of waveform
     time.sleep(0.6)
-    vi.write("c1:bswv amp, %s" %voltage) #set the amplitude
+    vi.write("c1:bswv amp, %s" %voltage_posX) #set the amplitude
     time.sleep(0.6)
     vi.write("c1:bswv sym, 0") #set the symmetry
     time.sleep(0.6)
@@ -53,19 +55,15 @@ def micromove_negX(x):
     rm=visa.ResourceManager()
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
-    
-    newt = 0.5
-    freq = 0.01
-    voltage = 2
 
-    print('negX,',voltage,'Vpp,',freq,"Hz,",newt,'s')
+    print('negX,',voltage_negX,'Vpp,',freq,"Hz,",newt,'s')
 
     print("Configuring C1")
     vi.write("c1:bswv frq, %s" %freq) #set the frequency of channel 1
     time.sleep(0.6)
     vi.write("c1:bswv wvtp,ramp") #set the type of waveform
     time.sleep(0.6)
-    vi.write("c1:bswv amp, %s" %voltage) #set the amplitude
+    vi.write("c1:bswv amp, %s" %voltage_negX) #set the amplitude
     time.sleep(0.6)
     vi.write("c1:bswv sym, 100") #set the symmetry
     time.sleep(0.6)
@@ -85,19 +83,15 @@ def micromove_negY(y):
     rm=visa.ResourceManager()
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
-    
-    newt = 0.5
-    freq = 0.01
-    voltage = 2
 
-    print('negY,',voltage,'Vpp,',freq,"Hz,",newt,'s')
+    print('negY,',voltage_negY,'Vpp,',freq,"Hz,",newt,'s')
 
     print("Configuring C2")
     vi.write("c2:bswv frq, %s" %freq) #set the frequency of channel 1
     time.sleep(0.6)
     vi.write("c2:bswv wvtp,ramp") #set the type of waveform
     time.sleep(0.6)
-    vi.write("c2:bswv amp, %s" %voltage) #set the amplitude
+    vi.write("c2:bswv amp, %s" %voltage_negY) #set the amplitude
     time.sleep(0.6)
     vi.write("c2:bswv sym, 0") #set the symmetry
     time.sleep(0.6)
@@ -118,18 +112,15 @@ def micromove_posY(y):
     li=rm.list_resources()
     vi=rm.open_resource('USB0::0xF4ED::0xEE3A::388C14124::0::INSTR')
     
-    newt = 0.5
-    freq = 0.01
-    voltage = 2
 
-    print('posY,',voltage,'Vpp,',freq,"Hz,",newt,'s')
+    print('posY,',voltage_posY,'Vpp,',freq,"Hz,",newt,'s')
 
     print("Configuring C2")
     vi.write("c2:bswv frq, %s" %freq) #set the frequency of channel 1
     time.sleep(0.6)
     vi.write("c2:bswv wvtp,ramp") #set the type of waveform
     time.sleep(0.6)
-    vi.write("c2:bswv amp, %s" %voltage) #set the amplitude
+    vi.write("c2:bswv amp, %s" %voltage_posY) #set the amplitude
     time.sleep(0.6)
     vi.write("c2:bswv sym, 100") #set the symmetry
     time.sleep(0.6)
