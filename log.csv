@@ -1,0 +1,450 @@
+Run Circle: 20230707_112846
+Center Piezo: 20230707_113141
+Run Circle: 20230707_113257
+Max Range Fit: 20230707_113403
+    Center coordinates: 14.222478460349134 9.97594947973445 mm
+    Radius: 2.80152438586698 mm
+Center Piezo: 20230707_113605
+Micro Moves Calib: 20230707_114236
+    Pos X slope: 0.06159670166015586
+    Pos X intercept: -0.0448852855631501
+    Neg X slope: -0.08517173437499963
+    Neg X intercept: 0.0597788536783846
+    Pos Y slope: 0.09809352319335964
+    Pos Y intercept: -0.08395358044433647
+    Neg Y slope: -0.0728542963867202
+    Neg Y intercept: 0.06546353238932501
+Updated config.
+AutoXYTestGRID: 20230707_145157
+AutoXYTestGRID: 20230707_153013
+AutoXYTestGRID: 20230707_162210
+Power Off: 20230707_202239
+Power On: 20230710_091142
+AutoXYTestGRID: 20230710_091200
+AutoXYTestGRID:\AutoXYTest_20230710_095446
+Micro Moves Calib: 20230710_104552
+AutoXYTestGRID:\AutoXYTest_20230710_104736
+Run Circle: 20230710_114237
+Run Circle: 20230710_114314
+Max Range Fit: 20230710_114415
+    Center coordinates: 14.088419933163435 9.977250971201734 mm
+    Radius: 2.749427481261579 mm
+AutoXYTestGRID:\AutoXYTest_20230710_114557
+AutoXYTestGRID:\AutoXYTest_20230710_124104
+Micro Moves Calib: 20230710_133345
+    Your micro moves should be defined by:
+    Pos X slope: 0.06417913330078091
+    Pos X intercept: -0.04922897045898371
+    Neg X slope: -0.0963739233398442
+    Neg X intercept: 0.07408269523111982
+    Pos Y slope: 0.08098087109375102
+    Pos Y intercept: -0.061137919759116324
+    Neg Y slope: -0.06691827050781032
+    Neg Y intercept: 0.05447313769530913
+AutoXYTestGRID:\AutoXYTest_20230710_134332
+AutoXYTestGRID:\AutoXYTest_20230710_151412
+AutoXYTestGRID:\AutoXYTest_20230710_164701
+Power Off: 20230710_173514
+Power On: 20230711_093839
+Micro Moves Calib: 20230711_094509
+    Your micro moves should be defined by:
+    Pos X slope: 0.06207561669921694
+    Pos X intercept: -0.04369774747721081
+    Neg X slope: -0.09205465185546798
+    Neg X intercept: 0.06594795629882673
+    Pos Y slope: 0.0904748742675796
+    Pos Y intercept: -0.06966436315918183
+    Neg Y slope: -0.06852135180664014
+    Neg Y intercept: 0.0577327046305328
+AutoXYTestGRID:\AutoXYTest_20230711_105026
+AutoXYTestGRID:\AutoXYTest_20230711_113143
+AutoXYTestGRID:\AutoXYTest_20230711_123719
+Lifted the spine.
+Run Circle: 20230711_140430
+Max Range Fit: 20230711_140525
+    Center coordinates: 14.082376537806509 9.593611390110397 mm
+    Radius: 2.973575617694878 mm
+Run Circle: 20230711_140819
+Run Circle: 20230711_141102
+Run Circle: 20230711_141324
+Run Circle: 20230711_141432
+Run Circle: 20230711_141508
+Power Off: 20230711_142331
+Power On: 20230711_142333
+Run Circle: 20230711_142713
+Run Circle: 20230711_142751
+Max Range Fit: 20230711_142848
+    Center coordinates: 13.219494601811215 10.58222697967144 mm
+    Radius: 2.600216260148984 mm
+Micro Moves Calib: 20230711_143632
+    Your micro moves should be defined by:
+    Pos X slope: 0.06399199023437595
+    Pos X intercept: -0.04894548160807481
+    Neg X slope: -0.08152827050781149
+    Neg X intercept: 0.05840131901041493
+    Pos Y slope: 0.07850758642577844
+    Pos Y intercept: -0.07009942521158401
+    Neg Y slope: 0.00016288818359413445
+    Neg Y intercept: 0.0003740879720046071
+Center Piezo: 20230711_145408
+Center Piezo: 20230711_145422
+Center Piezo: 20230711_145440
+Micro Moves Calib: 20230711_150150
+Power Off: 20230711_150656
+Power On: 20230711_152428
+Power Off: 20230711_152930
+Power On: 20230712_092939
+Micro Moves Calib: 20230712_093651
+    Pos X slope: 0.06368809082031246
+    Pos X intercept: -0.044454127278645984
+    Neg X slope: -0.08361585498046863
+    Neg X intercept: 0.060199866129557064
+    Pos Y slope: 0.09163732519531216
+    Pos Y intercept: -0.07202931331380165
+    Neg Y slope: -0.01007053222656111
+    Neg Y intercept: 0.013151615722654464
+Micro Moves Calib: 20230712_094544
+    Pos X slope: 0.06782782861328228
+    Pos X intercept: -0.05082273819987121
+    Neg X slope: -0.08664985546875172
+    Neg X intercept: 0.0638304495442737
+    Pos Y slope: 0.09247031396484397
+    Pos Y intercept: -0.07810377433268235
+    Neg Y slope: -0.0064137519531239865
+    Neg Y intercept: 0.007372136881509119
+Power Off: 20230712_094833
+Switch to piezo 3.
+Power On: 20230712_101815
+Run Circle: 20230712_101915
+Max Range Fit: 20230712_102017
+Max Range Fit: 20230712_102124
+Power Off: 20230712_102413
+Switch back to piezo 2.
+Power On: 20230712_103140
+Run Circle: 20230712_103320
+Max Range Fit: 20230712_103421
+Micro Moves Calib: 20230712_104117
+    Pos X slope: 0.07051274902343822
+    Pos X intercept: -0.04691306510416686
+    Neg X slope: -0.07967943017578206
+    Neg X intercept: 0.05961592586263148
+    Pos Y slope: 0.08289819580078192
+    Pos Y intercept: -0.07697497111002662
+    Neg Y slope: -0.04700727075195238
+    Neg Y intercept: 0.05167746520995968
+Micro Moves Calib: 20230712_105233
+    Pos X slope: 0.07122398779296937
+    Pos X intercept: -0.04766476831054832
+    Neg X slope: -0.08248966748046946
+    Neg X intercept: 0.058720159749350374
+    Pos Y slope: 0.08514795507812493
+    Pos Y intercept: -0.07973665901692757
+    Neg Y slope: -0.04518339868164033
+    Neg Y intercept: 0.04974385168456947
+Center Piezo: 20230712_110057
+Center Piezo: 20230712_110706
+Micro Moves Calib: 20230712_111825
+    Pos X slope: 0.07113647998046665
+    Pos X intercept: -0.046562756429032945
+    Neg X slope: -0.08499315185546867
+    Neg X intercept: 0.06065088012695341
+    Pos Y slope: 0.08509231152343691
+    Pos Y intercept: -0.0810873230794264
+    Neg Y slope: -0.050045313720702804
+    Neg Y intercept: 0.054262988159179674
+Micro Moves Calib: 20230712_112614
+    Your micro moves should be defined by:
+    Pos X slope: 0.06990114550781107
+    Pos X intercept: -0.04577546354166438
+    Neg X slope: -0.08132162841796957
+    Neg X intercept: 0.05414478523763124
+    Pos Y slope: 0.08201848071288963
+    Pos Y intercept: -0.07711905383300584
+    Neg Y slope: -0.045190413574218616
+    Neg Y intercept: 0.04877720345052056
+Center Piezo: 20230712_113930
+AutoXYTestWinCond:\AutoXYTest_20230712_114400
+AutoXYTestGRID:\AutoXYTest_20230712_115616
+AutoXYTestGRID:\AutoXYTest_20230712_130423
+AutoXYTestGRID:\AutoXYTest_20230712_155208
+Micro Moves Calib: 20230712_172224
+    Pos X slope: 0.06655634960937461
+    Pos X intercept: -0.0422810958658846
+    Neg X slope: -0.08069361718749875
+    Neg X intercept: 0.05380842708333134
+    Pos Y slope: 0.09127219409179793
+    Pos Y intercept: -0.08395469014485796
+    Neg Y slope: -0.10468336083984262
+    Neg Y intercept: 0.08861002254231586
+Power Off: 20230712_173148
+Power On: 20230713_093531
+Micro Moves Calib: 20230713_094210
+AutoXYTestGRID:\AutoXYTest_20230713_094426
+Run Circle: 20230713_113832
+Run Circle: 20230713_113948
+Max Range Fit: 20230713_114411
+Run Circle: 20230713_114545
+Max Range Fit: 20230713_120157
+Center Piezo: 20230713_120253
+Micro Moves Calib: 20230713_120944
+Run Circle: 20230713_142714
+Wipe clean.
+Max Range Fit: 20230713_142828
+    Center coordinates: 13.080736578694502 10.00989121114514 mm
+    Radius: 2.731668209016365 mm
+Micro Moves Calib: 20230713_143659
+    Pos X slope: 0.07506363085937691
+    Pos X intercept: -0.05242035026041834
+    Neg X slope: -0.0865131245117194
+    Neg X intercept: 0.06589912947591237
+    Pos Y slope: 0.10282619775390778
+    Pos Y intercept: -0.0909296929524771
+    Neg Y slope: 0.0005990004882836088
+    Neg Y intercept: 0.0002742941894492035
+Micro Moves Calib: 20230713_154021
+SWITCH TO PEZO 3 + SOCKET!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Run Circle: 20230713_162232
+Max Range Fit: 20230713_162332
+Micro Moves Calib: 20230713_163114
+    Pos X slope: 0.0848291356201173
+    Pos X intercept: -0.06406576690673844
+    Neg X slope: -0.09370188391113211
+    Neg X intercept: 0.07081809783935429
+    Pos Y slope: 0.08311904589843841
+    Pos Y intercept: -0.060315854309083504
+    Neg Y slope: -0.07541354827880901
+    Neg Y intercept: 0.056080516448975826
+AutoXYTestGRID:\AutoXYTest_20230713_163653
+Power Off: 20230714_090736
+SOLDERED PIEZO 3!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Power On: 20230714_092947
+Run Circle: 20230714_093055
+Max Range Fit: 20230714_093248
+    Center coordinates: 14.279623757699145 9.24917335303871 mm
+    Radius: 2.640552475547653 mm
+Micro Moves Calib: 20230714_094021
+Run Circle: 20230714_095202
+Run Circle: 20230714_095238
+Run Circle: 20230714_095347
+Run Circle: 20230714_095429
+Run Circle: 20230714_095714
+Run Circle: 20230714_100226
+Run Circle: 20230714_100417
+Run Circle: 20230714_100655
+BACK TO PIEZO 2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Run Circle: 20230714_110135
+Max Range Fit: 20230714_110238
+    Center coordinates: 14.169652398117108 8.931648792343074 mm
+    Radius: 2.781014931986823 mm
+Center Piezo: 20230714_110417
+Micro Moves Calib: 20230714_111100
+    Pos X slope: 0.06321559619140657
+    Pos X intercept: -0.048124818440756036
+    Neg X slope: -0.07753786669921998
+    Neg X intercept: 0.061550926513673214
+    Pos Y slope: 0.09605492407226598
+    Pos Y intercept: -0.08873650858561245
+    Neg Y slope: -0.004433768798829617
+    Neg Y intercept: 0.004898594604494371
+AutoXYTestWinCond:\AutoXYTest_20230714_111747
+AutoXYTestGRID:\AutoXYTest_20230714_115631
+Micro Moves Calib: 20230714_133346
+Power Off: 20230717_101254
+Power On: 20230717_101257
+Micro Moves Calib: 20230717_101919
+Micro Moves Calib: 20230717_102656
+Micro Moves Calib: 20230717_103416
+AutoXYTestWinCond:\AutoXYTest_20230717_105042
+Power Off: 20230717_173040
+SWICH TO PIEZO 5!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Power On: 20230719_094631
+Run Circle: 20230719_094915
+Max Range Fit: 20230719_095650
+Micro Moves Calib: 20230719_101333
+AutoXYTestGRID:\AutoXYTest_20230719_101823
+Micro Moves Calib: 20230719_111158
+Run Circle: 20230719_111315
+Center Piezo: 20230719_111328
+Micro Moves Calib: 20230719_112105
+Run Circle: 20230719_112259
+Max Range Fit: 20230719_112353
+Center Piezo: 20230719_120251
+Center Piezo: 20230719_120301
+Center Piezo: 20230719_120310
+Center Piezo: 20230719_120317
+Run Circle: 20230719_120540
+Max Range Fit: 20230719_120821
+Micro Moves Calib: 20230719_121556
+Run Circle: 20230719_121746
+Center Piezo: 20230719_121804
+Micro Moves Calib: 20230719_122431
+Run Circle: 20230719_122618
+Center Piezo: 20230719_122630
+Micro Moves Calib: 20230719_123306
+AutoXYTestWinCond:\AutoXYTest_20230719_123552
+Center Piezo: 20230719_124431
+Micro Moves Calib: 20230719_125148
+AutoXYTestWinCond:\AutoXYTest_20230719_125246
+Center Piezo: 20230719_135330
+Micro Moves Calib: 20230719_140001
+AutoXYTestWinCond:\AutoXYTest_20230719_140119
+Micro Moves Calib: 20230719_141145
+Micro Moves Calib: 20230719_141910
+Micro Moves Calib: 20230719_142846
+AutoXYTestWinCond:\AutoXYTest_20230719_143103
+Micro Moves Calib: 20230719_145738
+Micro Moves Calib: 20230719_161747
+Micro Moves Calib: 20230719_162639
+Micro Moves Calib: 20230719_163446
+Micro Moves Calib: 20230719_165901
+Run Circle: 20230719_170046
+Micro Moves Calib: 20230719_170754
+Power Off: 20230719_170950
+Power On: 20230720_093121
+Run Circle: 20230720_093212
+Max Range Fit: 20230720_093332
+    Center coordinates: 13.926651218460908 9.520424906778189 mm
+    Radius: 2.561495583120555 mm
+Micro Moves Calib: 20230720_094213
+Micro Moves Calib: 20230720_095124
+Micro Moves Calib: 20230720_100738
+Micro Moves Calib: 20230720_102851
+Micro Moves Calib: 20230720_103706
+Run Circle: 20230720_103951
+Center Piezo: 20230720_104018
+Micro Moves Calib: 20230720_104700
+AutoXYTestGRID:\AutoXYTest_20230720_104928
+Micro Moves Calib: 20230720_110611
+AutoXYTestGRID:\AutoXYTest_20230720_110840
+Micro Moves Calib: 20230720_112603
+AutoXYTestGRID:\AutoXYTest_20230720_113429
+Micro Moves Calib: 20230720_115120
+AutoXYTestGRID:\AutoXYTest_20230720_115312
+Micro Moves Calib: 20230720_121006
+AutoXYTestGRID:\AutoXYTest_20230720_121400
+Micro Moves Calib: 20230720_123542
+Micro Moves Calib: 20230720_124408
+Micro Moves Calib: 20230720_125118
+Micro Moves Calib: 20230720_125730
+Micro Moves Calib: 20230720_130348
+Micro Moves Calib: 20230720_131006
+Micro Moves Calib: 20230720_131624
+Micro Moves Calib: 20230720_132241
+Micro Moves Calib: 20230720_132859
+Micro Moves Calib: 20230720_133520
+Micro Moves Calib: 20230720_134141
+Micro Moves Calib: 20230720_141152
+Micro Moves Calib: 20230720_141817
+Micro Moves Calib: 20230720_142516
+Micro Moves Calib: 20230720_143222
+Micro Moves Calib: 20230720_143847
+Micro Moves Calib: 20230720_144504
+Micro Moves Calib: 20230720_145122
+Micro Moves Calib: 20230720_145744
+Micro Moves Calib: 20230720_150402
+AutoXYTestGRID:\AutoXYTest_20230720_151637
+Micro Moves Calib: 20230720_154534
+Micro Moves Calib: 20230720_155353
+Micro Moves Calib: 20230720_161256
+Micro Moves Calib: 20230720_162419
+Micro Moves Calib: 20230720_163035
+Micro Moves Calib: 20230720_163649
+Micro Moves Calib: 20230720_164306
+Micro Moves Calib: 20230720_164925
+Micro Moves Calib: 20230720_165539
+Micro Moves Calib: 20230720_170151
+Micro Moves Calib: 20230720_170802
+Micro Moves Calib: 20230720_171413
+Micro Moves Calib: 20230721_085727
+Micro Moves Calib: 20230721_090338
+Micro Moves Calib: 20230721_090949
+Micro Moves Calib: 20230721_091556
+Micro Moves Calib: 20230721_092203
+Micro Moves Calib: 20230721_092812
+Micro Moves Calib: 20230721_093421
+Micro Moves Calib: 20230721_094031
+Micro Moves Calib: 20230721_094646
+AutoXYTestGRID:\AutoXYTest_20230721_101400
+Micro Moves Calib: 20230721_103259
+Micro Moves Calib: 20230721_104415
+Micro Moves Calib: 20230721_105027
+AutoXYTestGRID:\AutoXYTest_20230721_105502
+Micro Moves Calib: 20230721_111340
+AutoXYTestGRID:\AutoXYTest_20230721_111753
+Micro Moves Calib: 20230721_113531
+AutoXYTestGRID:\AutoXYTest_20230721_113641
+Micro Moves Calib: 20230721_115807
+Micro Moves Calib: 20230721_120506
+AutoXYTestGRID:\AutoXYTest_20230721_120559
+Micro Moves Calib: 20230721_123443
+Center Piezo: 20230721_131643
+AutoXYTestGRID:\AutoXYTest_20230721_132424
+Micro Moves Calib: 20230721_140022
+AutoXYTestGRID:\AutoXYTest_20230721_140330
+AutoXYTestGRID:\AutoXYTest_20230721_141548
+Center Piezo: 20230721_142841
+Micro Moves Calib: 20230721_144742
+AutoXYTestGRID:\AutoXYTest_20230721_145143
+AutoXYTestGRID:\AutoXYTest_20230721_150326
+AutoXYTestGRID:\AutoXYTest_20230721_155647
+Center Piezo: 20230723_212637
+Center Piezo: 20230723_212722
+Center Piezo: 20230723_212738
+Power On: 20230724_094440
+Micro Moves Calib: 20230724_095117
+Micro Moves Calib: 20230724_095714
+Micro Moves Calib: 20230724_100312
+Micro Moves Calib: 20230724_100910
+Micro Moves Calib: 20230724_101527
+Power Off: 20230724_130520
+Power On: 20230725_100326
+Run Circle: 20230725_100514
+Micro Moves Calib: 20230725_101140
+Power On: 20230725_140025
+Power On: 20230726_102350
+Micro Moves Calib: 20230726_103030
+Micro Moves Calib: 20230726_103656
+Run Circle: 20230726_105036
+Max Range Fit: 20230726_105144
+Micro Moves Calib: 20230726_110309
+AutoXYTestGRID:\AutoXYTest_20230726_110750
+Micro Moves Calib: 20230726_130731
+Run Circle: 20230726_135030
+Power On: 20230726_143526
+Run Circle: 20230726_143621
+Run Circle: 20230726_144611
+Max Range Fit: 20230726_144955
+Max Range Fit: 20230726_145147
+Power Off: 20230726_150415
+Power On: 20230726_151332
+Micro Moves Calib: 20230726_151647
+Micro Moves Calib: 20230726_151740
+Micro Moves Calib: 20230726_154442
+Micro Moves Calib: 20230726_165922
+AutoXYTestGRID:\AutoXYTest_20230726_171901
+Micro Moves Calib: 20230726_191414
+AutoXYTestGRID:\AutoXYTest_20230726_200036
+Micro Moves Calib: 20230726_211914
+AutoXYTestGRID:\AutoXYTest_20230726_215639
+Micro Moves Calib: 20230727_084940
+AutoXYTestGRID:\AutoXYTest_20230727_085520
+Micro Moves Calib: 20230727_100016
+Micro Moves Calib: 20230727_101029
+Micro Moves Calib: 20230727_101832
+Micro Moves Calib: 20230727_102638
+AutoXYTestGRID:\AutoXYTest_20230727_103005
+Micro Moves Calib: 20230727_113550
+Micro Moves Calib: 20230727_115710
+Micro Moves Calib: 20230727_121402
+Micro Moves Calib: 20230727_123335
+Micro Moves Calib: 20230727_125240
+Micro Moves Calib: 20230727_132519
+AutoXYTestGRID:\AutoXYTest_20230727_132809
+Center Piezo: 20230727_145813
+FIXED ROUNDING BUG !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Micro Moves Calib: 20230727_152727
+Micro Moves Calib: 20230727_154509
+AutoXYTestGRID:\AutoXYTest_20230727_155052
+Micro Moves Calib: 20230727_211910
+Power Off: 20230728_092120
+Power On: 20230728_092122

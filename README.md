@@ -1,51 +1,46 @@
-# PiezoProject_UMich
-Repository for Python code relating to the University of Michigan piezo positioner test stand.
+# PiezoProject
+Repository for Python code relating to the University of Michigan piezo positioner test stand. 
 
-Last updated: 05/18/2023
+Last updated: 07/28/2023.
+
+User manual: https://docs.google.com/document/d/1pZa10o1XOrTdqq4Kcskxd7lwNJab01iaerL3jmyTxpM
+
+Required Python packages (that you would need to install):
+
+pyvisa: https://anaconda.org/conda-forge/pyvisa
+
+PySimpleGUI: https://anaconda.org/conda-forge/pysimplegui
+
+pypylon: https://pypi.org/project/pypylon/
 
 # Files
-
-If there are two files with the same name except one is a jupyter notebook, assume they serve the same purpose.
-
-`AutoCircleCopyRS.py`: function to move the spine along the maximum range 
-
 `AutoDriftTest.ipynb`: notebook for looking at drift and angular alignment of axis
 
-`AutoFitCircle.py`: function to move the spine along maximum range and return a best fit of said range 
-
-`AutoVelocityTest.py`: test the distance moved over time for standard movement calibs 
-
-`AutoXYTest.py`: generate a table of random points and attempt each once, returns csv of goals and finals
-
-`AutoXYTestWinCond.py`: generate a table of random points and attempt to get within an error radium given a maximum attempt limit, returns csv of goals paired with all finals 
-
-`GrabLocation.py`: function to return the location of the tip of the spine 
+`GetConversion.py`: can be used to measure the conversion factor in a bright photo
 
 `LiveVid.py`: show a live image of the spine tip 
 
-`MicroMovements.py`: movements calibrated for the smallest distance the spine will move 
+`LongTermTest.py`: used for looking at distance moved for given parameters over hours and hours, also the outline for calibrating micro moves
 
-`Movements.py`: standard move type, used based on dist/time for standard wave 
-
-`MovementsSteps.py`: same configuration as standard move, but the argument given is number of pulses
+`MakeXYGrid.ipynb`: notebook showing how the XY grid is generated 
 
 `PiezoGUI.py`: user interface for extensive testing
 
-`PixMovements.py`: not used anymore, used to be the smallest move type before sub-pixel measurement
-
 `PlotAutoDriftTest.ipynb`: used to plot a drift test 
+
+`PlotVelocityTest.ipynb`: used to plot velocity tests
+
+`PlotXYTestWinCond.ipynb`: used to plot XY test with the win condition or the grid test
 
 `PlotXYTest.ipynb`: used to plot a basic XY test
 
-`PlotXYTestWinCond.ipynb`: used to plot XY test with the win condition
+`PlotXYTestWinCond.ipynb`: used to plot XY test with the win condition or the grid test
 
-`StillErrorOverRange.ipynb`: used to test the detection error at multiple point across the spine's range
-
-`Testing.ipynb`: for testing the waveform and corresponding motion 
+`StillErrorOverRange.ipynb`: used to test the detection error at multiple points across the spine's range
 
 `TinyMoveTesting.ipynb`: for testing the smaller moves
 
-`TinyMovements.py`: the medium sized move, calibrated based on regular move but changes frequency for more precision
+`TinyMovements.py`: the medium sized move, calibrated based on micro move but runs for double the time to do slightly larger distances
 
 `WaveformTesting-Copy1.ipynb`: more waveform testing code 
 
@@ -55,13 +50,11 @@ If there are two files with the same name except one is a jupyter notebook, assu
 
 `config_constants.py`: contains all numerical values that describe the setup and calibrated moves 
 
-`datacollectsoftware-CopyRS-OLD.ipynb`: the old way of detecting the spine, terrible but saved for posterity
-
 `datacollectsoftware-CopyRS.ipynb`: new way to detect position with minimal error
 
-`move_by_XY.py`: moves the spine by an XY amount, choses move type based on distance 
+`log.csv`: tracks the tests performed
 
-`move_by_XYold.py`: older movement code
+`piezolib.py`: library of all commonly used movement, reading, and testing functions
 
 `timer.py`: for counting elapsed time
 
